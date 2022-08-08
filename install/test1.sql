@@ -1,27 +1,6 @@
--- phpMyAdmin SQL Dump
--- version 5.2.0
--- https://www.phpmyadmin.net/
---
--- Хост: localhost
--- Время создания: Авг 07 2022 г., 11:31
--- Версия сервера: 10.7.3-MariaDB
--- Версия PHP: 8.1.8
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- База данных: `test1`
---
-
--- --------------------------------------------------------
 
 --
 -- Структура таблицы `bank`
@@ -54,8 +33,6 @@ INSERT INTO `city` (`id`, `city`) VALUES
 (4, 'Ростов-На-Дону'),
 (5, 'Самара'),
 (6, 'Санкт-Петербург');
-
--- --------------------------------------------------------
 
 --
 -- Структура таблицы `users`
