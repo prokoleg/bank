@@ -118,6 +118,7 @@ if(isset($_POST['step3'])) :
   <h5>Конфигурационный файл</h5>
   <p>Введите пароль для гостевого доступа (он будет один для всех гостей)</p>
 <form method="post">
+
   <div class="mb-3 row">
     <label for="guestpass" class="col-sm-2 col-form-label">Database</label>
     <div class="col-sm-10">
@@ -129,7 +130,7 @@ if(isset($_POST['step3'])) :
 <?php
 endif;
 
-if(isset($_POST['step4'])) :
+if(isset($_POST['step3'])) :
 $config_data = "
 
 // Гостевой пароль :)
@@ -137,14 +138,21 @@ define('USERPASS', '".$_POST['guestpass']."');
 ";
 echo file_put_contents('../inc/config.php', $config_data, FILE_APPEND | LOCK_EX) ? '' : "<code>Увы, что-то пошло не так</code>";
 
+endif;
+
+if(isset($_POST['step4'])) :
+
+$adminlogin = $_POST['adminlogin'];
+$adminpass = $_POST['adminpass'];
 
 include_once ('../inc/config.php');
 $conn = new mysqli(HOST, USER, PASS, DATABASE);
 $conn->multi_query(file_get_contents('db.sql'));
+
 $conn->close();
 echo "<h1>Поздравляем!</h1>
 <p>Запись конфигурационного файла прошла успешно</p>
-<p>Теперь ты можешь перейти на <a href=".HOME.">главную</a> страницу сайта или войти в <a href=".HOME."/?link=enter&registration=false>админ-панель</a></p>";
+<p>Теперь ты можешь перейти на <a href=".HOME.">главную</a> страницу сайта или войти в <a href=".HOME."/singin>админ-панель</a>(my@mail.dn / 12345)</p>";
 endif;
 ?>
 </body>
