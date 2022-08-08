@@ -97,26 +97,50 @@ define('HOST', '".$_POST['host']."');
 define('DATABASE', '".$_POST['database']."');
 define('DBTABLE', 'bank');
 
-// Гостевой пароль :) Можете поменять его на свой
-define('USERPASS', 'GUesTPassWord');
-
 // Константы
 define('REQUEST', \$_SERVER['QUERY_STRING']);
 define('URL_AVATAR', HOME.'/img/avatars/');";
 
 echo file_put_contents('../inc/config.php', $config_data, FILE_APPEND | LOCK_EX) ? '' : "<code>Увы, что-то пошло не так</code>";
 ?>
+<h1>Шаг 3</h1>
+<p>Запись конфигурационного файла (параметры подключения к БД) прошла успешно</p>
 <form method="post">
   <button class="btn btn-outline-primary btn-lg btn-block mb10 m2" name="step3">Далее</button>
 </form>
+
 <?php
 endif;
 
 if(isset($_POST['step3'])) :
+?>
+        <h1>Шаг 4</h1>
+  <h5>Конфигурационный файл</h5>
+  <p>Введите пароль для гостевого доступа (он будет один для всех гостей)</p>
+<form method="post">
+  <div class="mb-3 row">
+    <label for="guestpass" class="col-sm-2 col-form-label">Database</label>
+    <div class="col-sm-10">
+      <input type="text" name="guestpass" class="form-control" id="guestpass" placeholder="Гостевой пароль">
+    </div>
+  </div>
+  <button class="btn btn-outline-primary btn-lg btn-block mb10 m2" name="step4">Далее</button>
+</form>
+<?php
+endif;
+
+if(isset($_POST['step4'])) :
+$config_data = "
+
+// Гостевой пароль :)
+define('USERPASS', '".$_POST['guestpass']."');
+";
+echo file_put_contents('../inc/config.php', $config_data, FILE_APPEND | LOCK_EX) ? '' : "<code>Увы, что-то пошло не так</code>";
+
 
 include_once ('../inc/config.php');
 $conn = new mysqli(HOST, USER, PASS, DATABASE);
-$conn->multi_query(file_get_contents('test1.sql'));
+$conn->multi_query(file_get_contents('db.sql'));
 $conn->close();
 echo "<h1>Поздравляем!</h1>
 <p>Запись конфигурационного файла прошла успешно</p>
