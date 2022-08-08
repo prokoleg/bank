@@ -1,0 +1,49 @@
+AddDefaultCharset UTF-8
+
+<IfModule mod_rewrite.c>
+
+# Enable rewrite rules
+RewriteEngine on
+ErrorDocument 404 /404.php
+
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+# Base directory
+RewriteBase /
+
+# All URL process by index.php
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule ^(.*) index.php [PT,L]
+
+RewriteCond %{QUERY_STRING} ^do=(.*)$ [NC]
+RewriteRule ^$ /? [R=301,L]
+
+RewriteRule ^/tags/$ /tag/ [R=301,L]
+
+# ЧПУ
+RewriteRule ^pay/?$ ?link=insert_pay [L,QSA]
+RewriteRule ^list/?$ ?link=pay [L,QSA]
+RewriteRule ^users/?$ ?link=users [L,QSA]
+RewriteRule ^cabinet/?$ ?link=user [L,QSA]
+RewriteRule ^settings/?$ ?link=settings [L,QSA]
+RewriteRule ^qr/?$ ?link=qr [L,QSA]
+RewriteRule ^logout/?$ ?link=exit [L,QSA]
+RewriteRule ^user/([^/]+)/?$ ?im=$1 [L,QSA]
+RewriteRule ^singin/?$ ?link=enter&registration=false [L,QSA]
+RewriteRule ^registration/?$ ?link=enter&registration=true [L,QSA]
+RewriteRule ^news/([^/]+)/?$ ?page=news&slug=$1 [L,QSA]
+
+</IfModule>
+
+<ifModule mod_deflate.c>
+  <IfModule mod_filter.c>
+      AddOutputFilterByType DEFLATE text/plain text/html
+      AddOutputFilterByType DEFLATE text/css
+      AddOutputFilterByType DEFLATE text/javascript application/javascript application/x-javascript
+      AddOutputFilterByType DEFLATE text/xml application/xml application/xhtml+xml application/rss+xml
+      AddOutputFilterByType DEFLATE application/json
+      AddOutputFilterByType DEFLATE application/vnd.ms-fontobject application/x-font-ttf font/opentype image/svg+xml image/x-icon
+  </ifModule>
+</ifModule>
