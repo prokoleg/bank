@@ -80,6 +80,13 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Дамп данных таблицы `users`
+--
+
+INSERT INTO `users` (`id`, `login`, `email`, `password`, `firstname`,`lastname`, `phone`, `city`, `avatar`, `vk_link`, `telegram_link`, `youtube_link`, `user_group`, `valid`, `save_me`) VALUES
+(1, 'admin', 'my@mail.dn', '12345', 'Admin', 'Gitovich', '+79595622322', 'Москва', 'noavatar.png', NULL, NULL, NULL, 1, 1, 'on');
+ 
+--
 -- Индексы сохранённых таблиц
 --
 
