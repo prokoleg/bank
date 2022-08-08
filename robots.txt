@@ -1,0 +1,8 @@
+﻿User-agent: *
+Disallow: /css
+Disallow: /js
+Disallow: /img
+Disallow: /pages
+Disallow: /turbo
+Disallow: /inc
+Disallow: /404.php
