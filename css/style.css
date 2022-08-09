@@ -42,10 +42,10 @@ a {
 	border-radius: 50px;
 	border: 1px solid gray;
 }
-.avatar_border_user { border: 1px solid lightblue; }
+.avatar_border_user { border: 1px solid blue; }
 .avatar_border_admin { border: 1px solid red; }
 .color_admin { color: red; }
-.color_user { color: lightblue; }
+.color_user { color: blue; }
 .avatar_margin_right {
 	margin-right: 10px;
 }
