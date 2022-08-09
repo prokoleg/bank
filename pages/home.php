@@ -14,28 +14,19 @@ if(!$_SESSION) {
 }
 
 $enter_email = $_SESSION['email'];
-$conn = new mysqli(HOST, USER, PASS, DATABASE);
-  $sql = "SELECT email, valid FROM users WHERE valid = 1 AND email='".$enter_email."'";
-  $result = $conn->query($sql);
-if ($result->num_rows > 0) {
+  $database = new Database("SELECT email, valid FROM users WHERE valid = 1 AND email='".$enter_email."'");
+  $db = $database->getConnection();
+if ($db->num_rows > 0) {
 	$valid = 1;
 } else {
 	$valid = 0;
 }
 
 	if ($valid = 1) {
-// Create connection
-$conn = new mysqli(HOST, USER, PASS, DATABASE);
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-$sql = "ALTER TABLE bank AUTO_INCREMENT=0";
-if (($conn->query($sql) === TRUE) && ($valid == 1)) {
-$sql = "INSERT INTO bank (pay) VALUES ($pay)";
-}
-if ($conn->query($sql) === FALSE) {
-	echo "Error: " . $sql . "<br>" . $conn->error;
+$database = new Database("ALTER TABLE bank AUTO_INCREMENT=0");
+$db = $database->getConnection();
+if (($db === TRUE) && ($valid == 1)) {
+$database = new Database("INSERT INTO bank (pay) VALUES ($pay)");
 }
 
 if ($valid == 1) {
@@ -55,15 +46,14 @@ header("Refresh: 0");
 } else {
 
 // Create connection
-$conn = new mysqli(HOST, USER, PASS, DATABASE);
-$sql = "SELECT id, pay, date_pay FROM bank";
-$result = $conn->query($sql);
+$database = new Database("SELECT id, pay, date_pay FROM bank");
+$db = $database->getConnection();
 
-if ($result->num_rows > 0) {
+if ($db->num_rows > 0) {
 	$sum = 0;
 	$count = 0;
   // output data of each row
-  while($row = $result->fetch_assoc()) {
+  while($row = $db->fetch_assoc()) {
     $sum += $row['pay'];
     $count++;
   }
@@ -72,7 +62,6 @@ if ($result->num_rows > 0) {
 }
       echo "<h2 class='h-2 m5'>Количество транзакций: ".$count."</h2>";
       echo "<h3 class='m5 mb10'>Всего накоплено: ".$sum. "00₽</h3>";
-$conn->close();
 }
 
 ?>

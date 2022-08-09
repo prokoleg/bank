@@ -78,17 +78,15 @@
     <select id="inputCity" class="form-select" name="city" required="required">
         <option selected value="null">...</option>
 <?php
-$conn = new mysqli(HOST, USER, PASS, DATABASE);
-$sql = "SELECT city FROM city";
-$result = $conn->query($sql);
+$city = new Database("SELECT city FROM city");
+$db = $city->getConnection();
 
-if ($result->num_rows > 0) {
+if ($db->num_rows > 0) {
   // output data of each row
-  while($row = $result->fetch_assoc()) {
+  while($row = $db->fetch_assoc()) {
   echo "\t\t<option>".$row['city']."</option>\n";
   }
 }
-$conn->close();
 ?>
     </select>
   </div>
@@ -118,18 +116,18 @@ if (!empty($_POST['email'])) {
   $avatar = 'noavatar.png';
   $save_me = isset($_POST['save_me']) ? $_POST['save_me'] : '';
 
-$conn = new mysqli(HOST, USER, PASS, DATABASE);
-$sql = "ALTER TABLE users AUTO_INCREMENT=0";
-if ($conn->query($sql) === TRUE) {
-$sql = "INSERT INTO users (firstname, lastname, login, email, password, phone, city, avatar, save_me) VALUES ('".$firstname."', '".$lastname."', '".$login."', '".$email."', '".$pass."', '".$phone."', '".$city."', '".$avatar."', '".$save_me."')";
+$reg = new Database("ALTER TABLE users AUTO_INCREMENT=0");
+$db = $reg->getConnection();
+if ($db === TRUE) {
+$reg = new Database("INSERT INTO users (firstname, lastname, login, email, password, phone, city, avatar, save_me) VALUES ('".$firstname."', '".$lastname."', '".$login."', '".$email."', '".$pass."', '".$phone."', '".$city."', '".$avatar."', '".$save_me."')");
+  $db = $reg->getConnection();
 }
 
-if ($conn->query($sql) == TRUE) {
+if ($db == TRUE) {
   echo "Учетная запись для <strong>{$login}</strong> успешно создана!";
 } else {
-  echo "Error: " . $sql . "<br>" . $conn->error;
+  echo "Ups...";
 }
-$conn->close();
 }
 
 // Идентификация пользователя (логин в БД)
@@ -140,15 +138,13 @@ if (!empty($_POST['enter_email'])) {
 
   $_SESSION['email'] = $enter_email;
 
-  $conn = new mysqli(HOST, USER, PASS, DATABASE);
-  $sql = "SELECT login, email, password, valid, firstname, lastname FROM users WHERE email='".$enter_email."' AND password='".$enter_pass."'";
-  $result = $conn->query($sql);
-while($row = $result->fetch_assoc()) {
+  $singin = new Database("SELECT login, email, password, valid, firstname, lastname FROM users WHERE email='".$enter_email."' AND password='".$enter_pass."'");
+  $db = $singin->getConnection();
+while($row = $db->fetch_assoc()) {
   $_SESSION['firstname'] = $row['firstname'];
   $_SESSION['lastname'] = $row['lastname'];
   $_SESSION['login'] = $row['login'];
   echo (($row['email'] === $enter_email) && ($row['password'] === $_POST['enter_pass'])) ? "Вы вошли как {$enter_email}" : (($row['valid'] === 0) ? "<code>Запросите у администрации валидации вашего аккаунта</code>" : "Введите пароль или email");
 }
-  $conn->close();
   echo "<meta http-equiv='refresh' content='0; URL=".HOME."'>";
 }

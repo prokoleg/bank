@@ -13,24 +13,22 @@
   </thead>
   <tbody>
 <?php
-$conn = new mysqli(HOST, USER, PASS, DATABASE);
-$sql = "SELECT id, pay, user, date_pay FROM bank";
-$result = $conn->query($sql);
+$database = new Database("SELECT id, pay, user, date_pay FROM bank");
+$db = $database->getConnection();
 
-if ($result->num_rows > 0) {
+if ($db->num_rows > 0) {
 	$sum = 0;
 	$count = 0;
   // output data of each row
-  while($row = $result->fetch_assoc()) {
+  while($row = $db->fetch_assoc()) {
     $sum += $row['pay'];
     $count++;
     echo "\t<tr><th scope='row'>{$count}</th><td>{$row['pay']}0</td><td>{$row['user']}</td><td>{$row['date_pay']}</td></tr>\n";
   }
 } else {
-  echo "<p class='m10 mb5 center'>Взносов не было. Вы можете <a href='?link=insert_pay'>стать первым!</a></p>";
+  echo "<p class='m10 mb5 center'>Взносов не было. Вы можете <a href='/pay'>стать первым!</a></p>";
 }
 
-$conn->close();
 ?>
   </tbody>
 </table>

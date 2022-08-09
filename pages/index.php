@@ -19,19 +19,17 @@ if (isset($_SESSION['firstname'])) {
 }
 
 
-$conn = new mysqli(HOST, USER, PASS, DATABASE);
-$sql = "SELECT id, pay, date_pay FROM bank";
-$result = $conn->query($sql);
+$pay_count = new Database("SELECT id, pay, date_pay FROM bank");
+$db = $pay_count->getConnection();
 
-if ($result->num_rows > 0) {
+if ($db->num_rows > 0) {
 	$sum = 0;
 	$count = 0;
   // output data of each row
-  while($row = $result->fetch_assoc()) {
+  while($row = $db->fetch_assoc()) {
     $sum += $row['pay'];
   }
 }
-$conn->close();
 ?>
 <h1 class="m5 mb5">Альтернативные алименты</h1>
 <div class="div_center w90 text tab">

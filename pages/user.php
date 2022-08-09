@@ -16,15 +16,15 @@ $enter_login = $_SESSION['login'];
 
 if($enter_login !=NULL) {
 // Вывод загруженного аватара
-$conn = new mysqli(HOST, USER, PASS, DATABASE);
-$sql = "SELECT * FROM users WHERE email='".$enter_email."'";
-$result = $conn->query($sql);
+$database = new Database("SELECT * FROM users WHERE email='".$enter_email."'");
+$db = $database->getConnection();
 
-while ($row = $result->fetch_assoc()) {
+while ($row = $db->fetch_assoc()) {
   $avatar = new Pictures($row['avatar']);
 echo "<img src='".$avatar->getAvatar()."' height='100px' width='100px' alt='".$avatar->getAvatar()."' title='".$enter_email."' class='avatar_border'>";
 }
 echo "<p><a href='../settings'>Сменить аватар</a></p>";
+echo "<p><a href='../profiledit'>Редактировать профиль</a></p>";
 ?>
 <!-- Modal window -->
 <br>
@@ -32,9 +32,8 @@ echo "<p><a href='../settings'>Сменить аватар</a></p>";
 </div>
     <div class="col-md-8">
     	<?php
-    //$conn = new mysqli(HOST, USER, PASS, DATABASE);
-		$result = $conn->query($sql);
-	    	while ($row = $result->fetch_assoc()) {
+    	$db = $database->getConnection();
+	    	while ($row = $db->fetch_assoc()) {
 		  		echo "<br><i class='bi bi-person'></i> : ".$row['login']."<br>";
 	    		echo "<i class='bi bi-telephone'></i> : ".$row['phone']."<br>";
 	    		echo "<i class='bi bi-building'></i> : ".$row['city']."<br>";
@@ -71,7 +70,6 @@ if($_POST && !empty($enter_email)) {
 	}
 }
 }
-	    	$conn->close();
 }
     	?>
     	</div>

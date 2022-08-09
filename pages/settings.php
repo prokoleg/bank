@@ -93,10 +93,9 @@ if (isset($_FILES[$input_name])) {
 			$name = mb_ereg_replace('[-]+', '-', $name);
 
 $enter_email = $_SESSION['email'];
-$conn = new mysqli(HOST, USER, PASS, DATABASE);
-$sql = "SELECT * FROM users WHERE email='".$enter_email."'";
-$result = $conn->query($sql);
-while ($row = $result->fetch_assoc()) {
+$database = new Database("SELECT * FROM users WHERE email='".$enter_email."'");
+$db = $database->getConnection();
+while ($row = $db->fetch_assoc()) {
 	$name = explode(".", $name);
 	$name = $row['login'].'.'.$name[1];
 }
@@ -143,15 +142,14 @@ while ($row = $result->fetch_assoc()) {
 
 // (запись аватара в БД)
 // Удаление старой аватарки
-$result = $conn->query($sql);
-while ($row = $result->fetch_assoc()) {
+$db = $database->getConnection();
+while ($row = $db->fetch_assoc()) {
 	unlink($_SERVER['DOCUMENT_ROOT']."/bank/img/avatars/".$row['avatar']);
 	}
 
 // Запись в БД
-$sql = "UPDATE users SET avatar='".$name."' WHERE email='".$enter_email."'";
-$result = $conn->query($sql);
-$conn->close();
+$wavatar = new Database("UPDATE users SET avatar='".$name."' WHERE email='".$enter_email."'");
+$db = $wavatar->getConnection();
 //
 
 					$success = '<h4>Ваш аватар успешно загружен.</h4>';

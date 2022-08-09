@@ -15,12 +15,10 @@ if (isset($_GET['im'])) {
 	  <div class="row mb10 m10">
     <div class="col-6 col-md-4">
 <?php
+$database = new Database("SELECT * FROM users WHERE login='".$user."'");
+$db = $database->getConnection();
 
-$conn = new mysqli(HOST, USER, PASS, DATABASE);
-$sql = "SELECT * FROM users WHERE login='".$user."'";
-$result = $conn->query($sql);
-
-while ($row = $result->fetch_assoc()) {
+while ($row = $db->fetch_assoc()) {
   $avatar = new Pictures($row['avatar']);
 echo "<img src='".$avatar->getAvatar()."' height='100px' width='100px' alt='".$avatar->getAvatar()."' title='".$row['email']."' class='avatar_border'>";
 
@@ -42,8 +40,6 @@ user::$telegram_link = $row['telegram_link'];
 user::$youtube_link = $row['youtube_link'];
 echo "<br>";
 user::socialLink();
-
-$conn->close();
 }
 }
 

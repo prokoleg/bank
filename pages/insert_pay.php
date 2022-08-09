@@ -15,15 +15,14 @@ if(!$_SESSION) {
 }
 
 $enter_email = $_SESSION['email'];
-$conn = new mysqli(HOST, USER, PASS, DATABASE);
-  $sql = "SELECT email, valid, firstname, lastname FROM users WHERE valid = 1 AND email='".$enter_email."'";
-  $result = $conn->query($sql);
+$database = new Database("SELECT email, valid, firstname, lastname FROM users WHERE valid = 1 AND email='".$enter_email."'");
+$db = $database->getConnection();
 
-while ($row = $result->fetch_assoc()) {
+while ($row = $db->fetch_assoc()) {
 $username = $row['firstname']." ".$row['lastname'];
 }
 
-if ($result->num_rows > 0) {
+if ($db->num_rows > 0) {
 	$valid = 1;
 } else {
 	$valid = 0;
@@ -31,22 +30,20 @@ if ($result->num_rows > 0) {
 
 		$login = $_SESSION['login'];
 	if ($login != NULL) {
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+$database = new Database("ALTER TABLE bank AUTO_INCREMENT=0");
+$db = $database->getConnection();
+if (($db === TRUE) && ($valid == 1)) {
+$database = new Database("INSERT INTO bank (pay, user) VALUES ('".$pay."', '".$username."')");
+	$db = $database->getConnection();
 }
-$sql = "ALTER TABLE bank AUTO_INCREMENT=0";
-if (($conn->query($sql) === TRUE) && ($valid == 1)) {
-$sql = "INSERT INTO bank (pay, user) VALUES ('".$pay."', '".$username."')";
-}
-if ($conn->query($sql) === FALSE) {
-	echo "Error: " . $sql . "<br>" . $conn->error;
+if ($db === FALSE) {
+	echo "Error<br>" . $db->error;
 }
 
 if ($valid == 1) {
 $obj = new Db($data, $pay);
 echo $obj->Write();
-header("Refresh: 0");
+//header("Location: ".$_SERVER['PHP_SELF']);
 } elseif ($valid == 0) {
 	echo "<code>Ваша учетная запись не валидирована администратором</code>";
 }
@@ -60,15 +57,13 @@ header("Refresh: 0");
 } else {
 
 // Create connection
-$conn = new mysqli(HOST, USER, PASS, DATABASE);
-$sql = "SELECT id, pay, date_pay FROM bank";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
+$database = new Database("SELECT id, pay, date_pay FROM bank");
+$db = $database->getConnection();
+if ($db->num_rows > 0) {
 	$sum = 0;
 	$count = 0;
   // output data of each row
-  while($row = $result->fetch_assoc()) {
+  while($row = $db->fetch_assoc()) {
     $sum += $row['pay'];
     $count++;
   }
@@ -76,7 +71,6 @@ if ($result->num_rows > 0) {
   echo "<br />";
 }
       echo ($count > 0) ? "<h2 class='h-2 m5'>Количество транзакций: ".$count."</h2><h3 class='m5 mb10'>Всего накоплено: ".$sum. "0₽</h3>" : "Транзакций не было. Стань первым!";
-$conn->close();
 }
 ?>
 <?php endif; ?>

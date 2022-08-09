@@ -10,12 +10,12 @@
   <tbody>
   	<tr><td>
 <?php
-$conn = new mysqli(HOST, USER, PASS, DATABASE);
-$sql = "SELECT login, avatar, user_group FROM users";
-$result = $conn->query($sql);
+// получаем соединение с базой данных
+$database = new Database("SELECT login, avatar, user_group FROM users");
+$db = $database->getConnection();
 
-if ($result->num_rows > 0) {
-  while($row = $result->fetch_assoc()) {
+if ($db->num_rows > 0) {
+  while($row = $db->fetch_assoc()) {
   	$users = new User($row['login'], '');
   	$avatar = new Pictures($row['avatar']);
 
@@ -30,7 +30,6 @@ if ($result->num_rows > 0) {
 } else {
   echo "<div class='center'><code>Пользователи отстутствуют. Вы можете <a href='registration'>стать первым</a>!</code></div>";
 }
-$conn->close();
 ?>
   </td></tr>
 </tbody>
