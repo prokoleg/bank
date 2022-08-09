@@ -8,11 +8,6 @@
 // Незаконное использование и распространение скрипта ЗАПРЕЩЕНО
 // Скрипт распространяется по лицензии MIT
 
-// Всякие инклюды
-include_once ('././inc/config.php');
-include_once ('././inc/class.php');
-include_once ('././inc/class_db.php');
-
 if(isset($_GET['name'])) :
 ?>
 	<h1>Редактор имени и фамилии</h1>
