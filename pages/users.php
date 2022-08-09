@@ -36,7 +36,7 @@ if ($db->num_rows > 0) {
 </tbody>
 <footer>
   <tr><td>
-    <strong>Легенда:</strong> <span class="color_admin">Администратор</span>, <span class="color_user">Пользователь</span>
+    <small><strong>Легенда:</strong> <span class="color_admin">Администратор</span>, <span class="color_user">Пользователь</span></small>
   </td></tr>
 </footer>
 </table>

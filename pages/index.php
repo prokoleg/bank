@@ -38,5 +38,5 @@ $db = $pay_count->getCliseDb();
 <?php if(!$_SESSION && !isset($_SESSION['login'])) : ?>
 <p>Совершив регистрацию, тебе будут доступны дополнительные функции, которые не доступны для гостей (полный отчет по счету, график пополнений, кто вносил, баланс счета, и многое другое). <a href="../registration">Регистрируйся</a> и <a href="../singin">входи</a>, чтобы ощутить в полном объеме весь функционал сайта!</p>
 <?php endif; ?>
-<p class="center">До совершеннолетия Маши осталось <strong><code><?= $num_days; ?></code></strong> месяцев. Уже накоплено <?php if(!$_SESSION && !isset($_SESSION['login'])) : ?>***<?php endif; ?><?php if($_SESSION && isset($_SESSION['login'])) { echo "<strong><code>".$sum."0</code></strong>" ; } ?> тысяч рублей</p>
+<p class="center">До совершеннолетия Маши осталось <strong><code><?= $num_days; ?></code></strong> месяцев. Уже накоплено <?php if(!$_SESSION && !isset($_SESSION['login'])) : ?>(<a href="../registration">требуется регистрация</a>)<?php endif; ?><?php if($_SESSION && isset($_SESSION['login'])) { echo "<strong><code>".$sum."0</code></strong>" ; } ?> рублей</p>
 </div>

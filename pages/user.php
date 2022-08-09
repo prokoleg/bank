@@ -23,8 +23,7 @@ while ($row = $db->fetch_assoc()) {
   $avatar = new Pictures($row['avatar']);
 echo "<img src='".$avatar->getAvatar()."' height='100px' width='100px' alt='".$avatar->getAvatar()."' title='".$enter_email."' class='avatar_border'>";
 }
-echo "<p><a href='../settings'>Сменить аватар</a></p>";
-echo "<p><a href='../profiledit'>Редактировать профиль</a></p>";
+echo "<p></p><p><a href='../settings'>Редактировать</a></p>";
 ?>
 <!-- Modal window -->
 <br>
