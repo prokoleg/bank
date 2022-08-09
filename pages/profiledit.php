@@ -8,7 +8,7 @@
 // Скрипт распространяется по лицензии MIT
 
 // Всякие инклюды
-include_once ('inc/class_im.php');
+include_once ('inc/classes/class_im.php');
 $enter_email = $_SESSION['email'];
 $enter_login = $_SESSION['login'];
 ?>
