@@ -42,8 +42,16 @@ class Url
 				$title = 'Перевод по QR-коду';
 			} elseif (REQUEST == 'link=settings') {
 				$title = 'Настройки';
+			} elseif (REQUEST == 'setting=name') {
+				$title = 'Настройки имени';
 			} elseif (REQUEST == 'link=user') {
 				$title = 'Личный кабинет';
+			} elseif (REQUEST == 'link=users') {
+				$title = 'Пользователи';
+			} elseif (REQUEST == 'name') {
+				$title = 'Сменить имя';
+			} elseif (REQUEST == 'avatar') {
+				$title = 'Сменить аватар';
 			} elseif (REQUEST == 'link=users') {
 				$title = 'Пользователи';
 			} else {
@@ -73,7 +81,7 @@ class Url
 			} elseif ($_GET['link'] == 'qr') {
 				include ('pages/qrcode.php');
 			} elseif ($_GET['link'] == 'settings') {
-				include ('pages/settings.php');
+				include ('pages/profiledit.php');
 			} elseif ($_GET['link'] == 'user') {
 				include ('pages/user.php');
 			} elseif ($_GET['link'] == 'users') {
@@ -87,6 +95,12 @@ class Url
 			include ('pages/im.php');
 		} elseif (isset($_GET['verefy'])) {
 			include ('inc/verefy.php');
+		} elseif (isset($_GET['name'])) {
+			include ('pages/settings/name.php');
+		} elseif (isset($_GET['avatar'])) {
+			include ('pages/settings/avatar.php');
+		} elseif (isset($_GET['pass'])) {
+			include ('pages/settings/pass.php');
 		}
 		return;
 	}
@@ -198,5 +212,22 @@ class Mail
 		$headers .= "From: Робот активации Blanet.Ru <no-reply@blanet.ru>\r\n";
 
 		return mail(self::$to, self::$subject, self::$message, $headers);
+	}
+}
+
+class Menu
+{
+	public static $menu;
+
+	public static function getSettingMenu()
+	{
+		self::$menu = "<div class='col-6 col-md-3'>
+		<li><a href='../cabinet'>Назад</a>
+		<li><a href='../?name'>Имя</a></li>
+		<li><a href='../?avatar'>Аватар</a></li>
+		<li><a href='../?pass'>Пароль</a></li>
+		</div>";
+
+	    return self::$menu;
 	}
 }
