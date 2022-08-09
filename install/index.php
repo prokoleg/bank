@@ -99,7 +99,13 @@ define('DBTABLE', 'bank');
 
 // Константы
 define('REQUEST', \$_SERVER['QUERY_STRING']);
-define('URL_AVATAR', HOME.'/img/avatars/');";
+define('URL_AVATAR', HOME.'/img/avatars/');
+
+// Подключение классов
+foreach (glob('inc/classes/*.php') as \$filename)
+{
+    include \$filename;
+}";
 
 echo file_put_contents('../inc/config.php', $config_data, FILE_APPEND | LOCK_EX) ? '' : "<code>Увы, что-то пошло не так</code>";
 ?>
