@@ -10,11 +10,12 @@
 session_start();
 
 $home = $_SERVER['REQUEST_SCHEME']."://".$_SERVER['SERVER_NAME'];
-file_get_contents('inc/config.php') ? "" : header("Location: $home/bank/install/index.php");
+file_get_contents('inc/config.php') ? "" : header("Location: $home/install/index.php");
 
 // Всякие инклюды
 include_once ('inc/config.php');
 include_once ('inc/class.php');
+include_once ('inc/class_db.php');
 // header
 require_once('inc/header.php');
 // navbar
