@@ -46,5 +46,6 @@ if (isset($_POST['username'])) {
 
   $changeln = new Database("UPDATE users SET lastname='".$username->getLastname()."' WHERE email='".$enter_email."'");
   $db = $changeln->getConnection();
+  $db = $database->getCliseDb();
 }
 ?>

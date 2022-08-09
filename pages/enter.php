@@ -87,6 +87,7 @@ if ($db->num_rows > 0) {
   echo "\t\t<option>".$row['city']."</option>\n";
   }
 }
+$db = $city->getCliseDb();
 ?>
     </select>
   </div>
@@ -128,6 +129,7 @@ if ($db == TRUE) {
 } else {
   echo "Ups...";
 }
+$db = $reg->getCliseDb();
 }
 
 // Идентификация пользователя (логин в БД)
@@ -146,5 +148,6 @@ while($row = $db->fetch_assoc()) {
   $_SESSION['login'] = $row['login'];
   echo (($row['email'] === $enter_email) && ($row['password'] === $_POST['enter_pass'])) ? "Вы вошли как {$enter_email}" : (($row['valid'] === 0) ? "<code>Запросите у администрации валидации вашего аккаунта</code>" : "Введите пароль или email");
 }
+$db = $singin->getCliseDb();
   echo "<meta http-equiv='refresh' content='0; URL=".HOME."'>";
 }

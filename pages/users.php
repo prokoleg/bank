@@ -26,7 +26,8 @@ if ($db->num_rows > 0) {
     }
 
   	echo "\t<div class='avatar center mr10'><a href='user/".$users->getUserName()."'><img src='".$avatar->getAvatar()."' height='60px' width='60px' alt='".$avatar->getAvatar()."' title='".$users->getUserName()."' class='avatar_border ".$border." avatar_margin_right'></a><br>".$row['login']."</div>\n";
-  }
+  }  
+  $db = $database->getCliseDb();
 } else {
   echo "<div class='center'><code>Пользователи отстутствуют. Вы можете <a href='registration'>стать первым</a>!</code></div>";
 }

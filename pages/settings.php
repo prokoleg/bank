@@ -100,7 +100,6 @@ while ($row = $db->fetch_assoc()) {
 	$name = $row['login'].'.'.$name[1];
 }
 
-
 			// Т.к. есть проблема с кириллицей в названиях файлов (файлы становятся недоступны).
 			// Сделаем их транслит:
 			$converter = array(
@@ -150,6 +149,7 @@ while ($row = $db->fetch_assoc()) {
 // Запись в БД
 $wavatar = new Database("UPDATE users SET avatar='".$name."' WHERE email='".$enter_email."'");
 $db = $wavatar->getConnection();
+$db = $database->getCliseDb();
 //
 
 					$success = '<h4>Ваш аватар успешно загружен.</h4>';

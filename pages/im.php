@@ -41,6 +41,7 @@ user::$youtube_link = $row['youtube_link'];
 echo "<br>";
 user::socialLink();
 }
+$db = $database->getCliseDb();
 }
 
 ?>

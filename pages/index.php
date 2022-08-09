@@ -30,6 +30,7 @@ if ($db->num_rows > 0) {
     $sum += $row['pay'];
   }
 }
+$db = $pay_count->getCliseDb();
 ?>
 <h1 class="m5 mb5">Альтернативные алименты</h1>
 <div class="div_center w90 text tab">

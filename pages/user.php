@@ -48,6 +48,9 @@ echo "<p><a href='../profiledit'>Редактировать профиль</a></
 					user::userSocialLink();
                         $_SESSION['verefy'] = $row['valid'];
 	    	}
+
+			$db = $database->getCliseDb();
+			
 if (empty($_SESSION['verefy']) || $_SESSION['verefy'] != 1) {
 	if (!$_POST) {
 ?>

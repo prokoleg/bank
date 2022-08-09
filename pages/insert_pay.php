@@ -72,6 +72,7 @@ if ($db->num_rows > 0) {
 }
       echo ($count > 0) ? "<h2 class='h-2 m5'>Количество транзакций: ".$count."</h2><h3 class='m5 mb10'>Всего накоплено: ".$sum. "0₽</h3>" : "Транзакций не было. Стань первым!";
 }
+$db = $database->getCliseDb();
 ?>
 <?php endif; ?>
 <?php if(!isset($_SESSION['login'])) {
