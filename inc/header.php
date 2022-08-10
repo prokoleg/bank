@@ -21,8 +21,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
   	<link rel="stylesheet" href="../css/print.css"/>
 	<link rel="stylesheet" href="../css/style.css?v=<?php echo rand(0, 9999); ?>"/>
-	<link rel="canonical" href="<?php echo $_SERVER['REQUEST_SCHEME']."://".$_SERVER['SERVER_NAME']; ?>" />
-	
+	<link rel="canonical" href="https://bank.blanet.ru/"/>
 	<title><?= url::getTitle(); ?></title>
 </head>
 <body>

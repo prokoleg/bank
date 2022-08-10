@@ -21,7 +21,7 @@ $db = $database->getConnection();
 	</div>
 </div>
 <?php
-$db = $database->getCliseDb();
+$db = $database->getCloseDb();
 endif; ?>
 <?php if(!isset($_SESSION['login'])) {
 header('Location: '.HOME);
