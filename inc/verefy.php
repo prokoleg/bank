@@ -11,9 +11,8 @@
 $enter_email = $_SESSION['email'];
 $enter_login = $_SESSION['login'];
 
-$conn = new mysqli(HOST, USER, PASS, DATABASE);
-$sql = "UPDATE users SET valid=1 WHERE email='".$enter_email."'";
-$result = $conn->query($sql);
+$database = new Database("UPDATE users SET valid=1 WHERE email='".$enter_email."'");
+$db = $database->getConnection();
 
 ?>
   <div class="row mb10 m10">
@@ -22,7 +21,7 @@ $result = $conn->query($sql);
 	</div>
 </div>
 <?php
-$conn->close();
+$db = $database->getCliseDb();
 endif; ?>
 <?php if(!isset($_SESSION['login'])) {
 header('Location: '.HOME);
