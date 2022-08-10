@@ -39,4 +39,4 @@ if ($db->num_rows > 0) {
 <?php endif; ?>
 <p class="center">До совершеннолетия Маши осталось <strong><code><?= $num_days; ?></code></strong> месяцев. Уже накоплено <?php if(!$_SESSION && !isset($_SESSION['login'])) : ?>(<a href="../registration">требуется регистрация</a>)<?php endif; ?><?php if($_SESSION && isset($_SESSION['login'])) { echo "<strong><code>".$sum."0</code></strong>" ; } ?> рублей</p>
 </div>
-<?php $db = $pay_count->getCliseDb(); ?>
+<?php $db = $pay_count->getCloseDb(); ?>

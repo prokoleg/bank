@@ -73,7 +73,7 @@
          pattern="\+7\s?[\(]{0,1}9[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}"
          placeholder="+71234567890">
   </div>
-  <div class="col-md-6">
+  <div class="col-md-3">
     <label for="inputCity" class="form-label">Город</label>
     <select id="inputCity" class="form-select" name="city" required="required">
         <option selected value="null">...</option>
@@ -87,7 +87,7 @@ if ($db->num_rows > 0) {
   echo "\t\t<option>".$row['city']."</option>\n";
   }
 }
-$db = $city->getCliseDb();
+$db = $city->getCloseDb();
 ?>
     </select>
   </div>
@@ -129,7 +129,7 @@ if ($db == TRUE) {
 } else {
   echo "Ups...";
 }
-$db = $reg->getCliseDb();
+$db = $reg->getCloseDb();
 }
 
 // Идентификация пользователя (логин в БД)
@@ -148,6 +148,6 @@ while($row = $db->fetch_assoc()) {
   $_SESSION['login'] = $row['login'];
   echo (($row['email'] === $enter_email) && ($row['password'] === $_POST['enter_pass'])) ? "Вы вошли как {$enter_email}" : (($row['valid'] === 0) ? "<code>Запросите у администрации валидации вашего аккаунта</code>" : "Введите пароль или email");
 }
-$db = $singin->getCliseDb();
+$db = $singin->getCloseDb();
   echo "<meta http-equiv='refresh' content='0; URL=".HOME."'>";
 }

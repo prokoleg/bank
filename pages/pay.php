@@ -25,7 +25,7 @@ if ($db->num_rows > 0) {
     $count++;
     echo "\t<tr><th scope='row'>{$count}</th><td>{$row['pay']}0</td><td>{$row['user']}</td><td>{$row['date_pay']}</td></tr>\n";
   }
-  $db = $database->getCliseDb();
+  $db = $database->getCloseDb();
 } else {
   echo "<p class='m10 mb5 center'>Взносов не было. Вы можете <a href='/pay'>стать первым!</a></p>";
 }

@@ -35,13 +35,13 @@ echo "<img src='".$avatar->getAvatar()."' height='100px' width='100px' alt='".$a
 user::$group = $row['user_group'];
 user::getGroup();
 
-user::$vk_link = $row['vk_link'];
-user::$telegram_link = $row['telegram_link'];
-user::$youtube_link = $row['youtube_link'];
+SocialLink::$vk_link = $row['vk_link'];
+SocialLink::$telegram_link = $row['telegram_link'];
+SocialLink::$youtube_link = $row['youtube_link'];
 echo "<br>";
-user::socialLink();
+SocialLink::socialLink();
 }
-$db = $database->getCliseDb();
+$db = $database->getCloseDb();
 }
 
 ?>

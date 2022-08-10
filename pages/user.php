@@ -40,15 +40,15 @@ echo "<p></p><p><a href='../settings'>Редактировать</a></p>";
 	    		$password = new User('', $row['password']);
 	    		echo $password->replacePass(); // password
 
-					user::$vk_link = $row['vk_link'];
-					user::$telegram_link = $row['telegram_link'];
-					user::$youtube_link = $row['youtube_link'];
+					SocialLink::$vk_link = $row['vk_link'];
+					SocialLink::$telegram_link = $row['telegram_link'];
+					SocialLink::$youtube_link = $row['youtube_link'];
 					echo "<br>";
-					user::userSocialLink();
+					SocialLink::userSocialLink();
                         $_SESSION['verefy'] = $row['valid'];
 	    	}
 
-			$db = $database->getCliseDb();
+			$db = $database->getCloseDb();
 			
 if (empty($_SESSION['verefy']) || $_SESSION['verefy'] != 1) {
 	if (!$_POST) {

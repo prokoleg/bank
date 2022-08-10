@@ -28,7 +28,7 @@ $db = $database->getConnection();
 if (($db === TRUE) && ($valid == 1)) {
 $database = new Database("INSERT INTO bank (pay) VALUES ($pay)");
 }
-$db = $database->getCliseDb();
+$db = $database->getCloseDb();
 
 if ($valid == 1) {
 $obj = new Db($data, $pay);
@@ -63,7 +63,7 @@ if ($db->num_rows > 0) {
 }
       echo "<h2 class='h-2 m5'>Количество транзакций: ".$count."</h2>";
       echo "<h3 class='m5 mb10'>Всего накоплено: ".$sum. "00₽</h3>";
-$db = $database->getCliseDb();
+$db = $database->getCloseDb();
 }
 
 ?>
