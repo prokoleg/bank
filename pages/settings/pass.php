@@ -37,15 +37,16 @@ if(isset($_GET['pass'])) :
 if (isset($_POST['pass']) && ($_POST['pass1'] == $_POST['pass2'])) {
   $enter_email = $_SESSION['email'];
   UserIm::$password = $_POST['pass1'];
-  UserIm::getPass();
 
-  $changepass = new Database("UPDATE users SET password='".UserIm::$password."' WHERE email='".$enter_email."'");
+  $changepass = new Database("UPDATE users SET password='".UserIm::getPass()."' WHERE email='".$enter_email."'");
   $db = $changepass->getConnection();
 
-  $db = $changepass->getCliseDb();
+  $db = $changepass->getCloseDb();
   if($db == TRUE) {
     echo "<h3>Смена пароля прошла успешно</h3>";
   }
+} elseif (isset($_POST['pass']) && ($_POST['pass1'] != $_POST['pass2'])) {
+  echo "<code>Пароли не совпадают</code>";
 }
 endif;
   endif;

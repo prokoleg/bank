@@ -27,7 +27,7 @@ if(isset($_GET['name'])) :
     <input name="lastname" type="text" class="form-control" id="lastname" required="required">
   </div>
   <div class="col-12">
-    <button type="submit" class="btn btn-outline-primary btn-lg btn-block mb10 m2" name="username" disabled>Сохранить</button>
+    <button type="submit" class="btn btn-outline-primary btn-lg btn-block mb10 m2" name="username">Сохранить</button>
   </div>
 </form>
 <!-- Форма регистрации -->
@@ -37,14 +37,16 @@ if(isset($_GET['name'])) :
 if (isset($_POST['username'])) {
 	$firstname = $_POST['firstname'];
 	$lastname = $_POST['lastname'];
+  $enter_email = $_SESSION['email'];
   $username = new UserIm($firstname, $lastname);
 
   $changefn = new Database("UPDATE users SET firstname='".$username->getFirstname()."' WHERE email='".$enter_email."'");
   $db = $changefn->getConnection();
+  $db = $changefn->getCloseDb();
 
   $changeln = new Database("UPDATE users SET lastname='".$username->getLastname()."' WHERE email='".$enter_email."'");
   $db = $changeln->getConnection();
-  $db = $database->getCliseDb();
+  $db = $changeln->getCloseDb();
 }
 endif;
   endif;

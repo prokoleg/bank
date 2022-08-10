@@ -155,7 +155,7 @@ while ($row = $db->fetch_assoc()) {
 // Запись в БД
 $wavatar = new Database("UPDATE users SET avatar='".$name."' WHERE email='".$enter_email."'");
 $db = $wavatar->getConnection();
-$db = $database->getCliseDb();
+$db = $database->getCloseDb();
 //
 
 					$success = '<h4>Ваш аватар успешно загружен.</h4>';
