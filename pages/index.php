@@ -18,7 +18,6 @@ if (isset($_SESSION['firstname'])) {
 	$name = "гость";
 }
 
-
 $pay_count = new Database("SELECT id, pay, date_pay FROM bank");
 $db = $pay_count->getConnection();
 
@@ -30,7 +29,7 @@ if ($db->num_rows > 0) {
     $sum += $row['pay'];
   }
 }
-$db = $pay_count->getCliseDb();
+
 ?>
 <h1 class="m5 mb5">Альтернативные алименты</h1>
 <div class="div_center w90 text tab">
@@ -40,3 +39,4 @@ $db = $pay_count->getCliseDb();
 <?php endif; ?>
 <p class="center">До совершеннолетия Маши осталось <strong><code><?= $num_days; ?></code></strong> месяцев. Уже накоплено <?php if(!$_SESSION && !isset($_SESSION['login'])) : ?>(<a href="../registration">требуется регистрация</a>)<?php endif; ?><?php if($_SESSION && isset($_SESSION['login'])) { echo "<strong><code>".$sum."0</code></strong>" ; } ?> рублей</p>
 </div>
+<?php $db = $pay_count->getCliseDb(); ?>
