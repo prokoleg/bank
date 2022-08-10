@@ -48,10 +48,11 @@ $db = $database->Group();
 if ($db->num_rows > 0) {
   echo "<tr><td>";
 while ($row = $db->fetch_assoc()) {
-  echo "<a href='user/".$users->getUserName()."'>".$row['login']."</a>";
+  echo "\n<a href='user/".$row['login']."' title='".$row['firstname']." ".$row['lastname']."'>".$row['login']."</a>";
 }
-echo "</td></tr>";
+echo "\n</td></tr>";
 }
+ // $db = $database->getCloseDb();
 }
 ?>
 </footer>
