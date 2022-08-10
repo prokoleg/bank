@@ -36,8 +36,24 @@ if ($db->num_rows > 0) {
 </tbody>
 <footer>
   <tr><td>
-    <small><strong>Легенда:</strong> <span class="color_admin">Администратор</span>, <span class="color_user">Пользователь</span></small>
+    <small><strong>Легенда:</strong> <a href='?group=1'><span class="color_admin">Администратор</span></a>, <a href='?group=2'><span class="color_user">Пользователь</span></a></small>
   </td></tr>
+
+<?php
+// Отображаем юзеров из выбранной группы
+if (isset($_GET['group'])) {
+
+$database = new UserGroup($_GET['group']);
+$db = $database->Group();
+if ($db->num_rows > 0) {
+  echo "<tr><td>";
+while ($row = $db->fetch_assoc()) {
+  echo "<a href='user/".$users->getUserName()."'>".$row['login']."</a>";
+}
+echo "</td></tr>";
+}
+}
+?>
 </footer>
 </table>
 <!-- Вывод всех транзакций -->
