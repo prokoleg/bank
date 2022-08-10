@@ -11,8 +11,9 @@ class Database {
 
     // получаем соединение с БД
     public function getConnection(){
-        
-        include_once (__DIR__.'../config.php');
+
+        $root = $_SERVER['DOCUMENT_ROOT'];
+        include_once ($root.'/inc/config.php');
         
         $this->conn = new mysqli(HOST, USER, PASS, DATABASE);
 
