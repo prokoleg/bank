@@ -149,7 +149,7 @@ while ($row = $db->fetch_assoc()) {
 // Удаление старой аватарки
 $db = $database->getConnection();
 while ($row = $db->fetch_assoc()) {
-	unlink($_SERVER['DOCUMENT_ROOT']."/bank/img/avatars/".$row['avatar']);
+	unlink($_SERVER['DOCUMENT_ROOT']."/img/avatars/".$row['avatar']);
 	}
 
 // Запись в БД
