@@ -50,10 +50,25 @@ CREATE TABLE `city` (
 INSERT INTO `city` (`id`, `city`) VALUES
 (1, 'Волгоград'),
 (2, 'Воронеж'),
+(8, 'Екатеринбург'),
+(20, 'Ижевск'),
+(9, 'Казань'),
+(15, 'Краснодар'),
+(14, 'Красноярск'),
 (3, 'Москва'),
+(10, 'Нижний Новгород'),
+(7, 'Новосибирск'),
+(12, 'Омск'),
+(16, 'Пермь'),
 (4, 'Ростов-На-Дону'),
 (5, 'Самара'),
-(6, 'Санкт-Петербург');
+(6, 'Санкт-Петербург'),
+(17, 'Саратов'),
+(21, 'Серпухов'),
+(19, 'Тольятти'),
+(18, 'Тюмень'),
+(13, 'Уфа'),
+(11, 'Челябинск');
 
 -- --------------------------------------------------------
 
@@ -83,9 +98,10 @@ CREATE TABLE `users` (
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id`, `login`, `email`, `password`, `firstname`,`lastname`, `phone`, `city`, `avatar`, `vk_link`, `telegram_link`, `youtube_link`, `user_group`, `valid`, `save_me`) VALUES
-(1, 'admin', 'my@mail.dn', '12345', 'Admin', 'Gitovich', '+79595622322', 'Москва', 'noavatar.png', NULL, NULL, NULL, 1, 1, 'on');
+INSERT INTO `users` (`id`, `login`, `email`, `password`, `firstname`, `lastname`, `phone`, `city`, `avatar`, `vk_link`, `telegram_link`, `youtube_link`, `user_group`, `valid`, `save_me`) VALUES
+(1, 'admin', 'my@mail.dn', '12345', 'Вася', 'Иванов', '+79595622322', 'Челябинск', 'admin.jpg', '1', NULL, NULL, 1, 1, 'on');
  
+
 --
 -- Индексы сохранённых таблиц
 --
@@ -108,6 +124,7 @@ ALTER TABLE `city`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `login` (`login`),
   ADD UNIQUE KEY `phone` (`phone`);
 
 --

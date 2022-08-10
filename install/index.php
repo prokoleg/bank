@@ -22,7 +22,7 @@
 			<h1>Здравствуйте</h1>
 		<p>Это автоматический установщик CMS Blanet.Ru. Для продолжения нажмите ДАЛЕЕ</p>
 <form method="post">
-  <button class="btn btn-outline-primary btn-lg btn-block mb10 m2" name="step0">Далее</button>
+  <input type="submit" value="Далее" class="btn btn-outline-primary btn-lg btn-block mb10 m2" name="step0">
 </form>
 <?php endif; ?>
 <?php if (isset($_POST['step0'])) : ?>
@@ -36,7 +36,7 @@
       <input type="text" name="homepage" class="form-control" id="homepage" value="<?= $_SERVER['REQUEST_SCHEME']."://".$_SERVER['SERVER_NAME']; ?>">
     </div>
   </div>
-  <button class="btn btn-outline-primary btn-lg btn-block mb10 m2" name="step1">Далее</button>
+  <input type="submit" value="Далее" class="btn btn-outline-primary btn-lg btn-block mb10 m2" name="step1">
 </form>
 <?php endif; ?>
 <?php
@@ -79,7 +79,7 @@ file_put_contents('../inc/config.php', $config_data, FILE_APPEND | LOCK_EX);
       <input type="text" name="database" class="form-control" id="database" placeholder="Имя БД">
     </div>
   </div>
-  <button class="btn btn-outline-primary btn-lg btn-block mb10 m2" name="step2">Далее</button>
+  <input type="submit" value="Далее" class="btn btn-outline-primary btn-lg btn-block mb10 m2" name="step2">
 </form>
 </div>
 <?php endif; ?>
@@ -112,7 +112,7 @@ echo file_put_contents('../inc/config.php', $config_data, FILE_APPEND | LOCK_EX)
 <h1>Шаг 3</h1>
 <p>Запись конфигурационного файла (параметры подключения к БД) прошла успешно</p>
 <form method="post">
-  <button class="btn btn-outline-primary btn-lg btn-block mb10 m2" name="step3">Далее</button>
+  <input type="submit" value="Далее" class="btn btn-outline-primary btn-lg btn-block mb10 m2" name="step3">
 </form>
 
 <?php
@@ -126,12 +126,12 @@ if(isset($_POST['step3'])) :
 <form method="post">
 
   <div class="mb-3 row">
-    <label for="guestpass" class="col-sm-2 col-form-label">Database</label>
+    <label for="guestpass" class="col-sm-2 col-form-label">Гостевой пароль</label>
     <div class="col-sm-10">
-      <input type="text" name="guestpass" class="form-control" id="guestpass" placeholder="Гостевой пароль">
+      <input type="text" name="guestpass" class="form-control" id="guestpass" placeholder="1234" disabled>
     </div>
   </div>
-  <button class="btn btn-outline-primary btn-lg btn-block mb10 m2" name="step4">Далее</button>
+  <input type="submit" value="Далее" class="btn btn-outline-primary btn-lg btn-block mb10 m2" name="step4">
 </form>
 <?php
 endif;
@@ -140,7 +140,7 @@ if(isset($_POST['step3'])) :
 $config_data = "
 
 // Гостевой пароль :)
-define('USERPASS', '".$_POST['guestpass']."');
+define('USERPASS', '1234');
 ";
 echo file_put_contents('../inc/config.php', $config_data, FILE_APPEND | LOCK_EX) ? '' : "<code>Увы, что-то пошло не так</code>";
 
@@ -148,8 +148,8 @@ endif;
 
 if(isset($_POST['step4'])) :
 
-$adminlogin = $_POST['adminlogin'];
-$adminpass = $_POST['adminpass'];
+// $adminlogin = $_POST['adminlogin'];
+// $adminpass = $_POST['adminpass'];
 
 include_once ('../inc/config.php');
 $conn = new mysqli(HOST, USER, PASS, DATABASE);
