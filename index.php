@@ -10,16 +10,20 @@
 session_start();
 
 $home = $_SERVER['REQUEST_SCHEME']."://".$_SERVER['SERVER_NAME'];
-@file_get_contents('inc/config.php') ? "" : header("Location: $home/install/index.php");
 
+if (!file_exists('inc/config.php')) {
+    require_once ('inc/classes/class_url.php');
+    header("Location: $home/install/index.php");
+}
+
+if (file_exists('inc/config.php')) :
 // Всякие инклюды
-@include_once ('inc/config.php');
+    require_once ('inc/config.php');
 // header
-require_once('inc/header.php');
+    require_once('inc/header.php');
 // navbar
-require_once('inc/navigation.php');
+    require_once('inc/navigation.php');
 ?>
-
 <!-- Content -->
 <div class="container">
 <?php
@@ -34,4 +38,7 @@ require_once('inc/navigation.php');
 <!-- <img src="https://createqr.ru?Name=Прокофьева М.О&PersonalAcc=40817810290630019593&BankName=ПАО 'БАНК САНКТ-ПЕТЕРБУРГ'&BIC=044030790&CorrespAcc=30101810900000000790&SumRub=100&Purpose=Пожертвование"  width="150" height="150" alt="QR-код для оплаты"> -->
 
 <!-- footer -->
-<?php require_once('inc/footer.php'); ?>
+<?php require_once('inc/footer.php');
+
+endif;
+?>
