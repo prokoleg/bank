@@ -14,7 +14,7 @@ class UserIm
 	public $email;
 	public $phone;
 	public $city;
-	public $password;
+	public static $password;
 
 	function __construct($firstname, $lastname) {
 		$this->firstname = $firstname;
@@ -26,5 +26,10 @@ class UserIm
 	}
 	function getLastname() {
 		return $this->lastname;
+	}
+
+	public static function getPass() {
+		return crypt(self::$password, '$6$password$');
+		//return password_hash(self::$password, PASSWORD_DEFAULT);
 	}
 }
