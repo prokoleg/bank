@@ -57,6 +57,7 @@
     <div class="col-md-6">
     <label for="inputEmail4" class="form-label">Email</label>
     <input name="email" type="email" class="form-control" id="inputEmail4" required="required">
+      (<code>пожалуйста, не используйте почту yandex</code>)
   </div>
   <div class="col-md-6">
     <label for="inputPassword" class="form-label">Пароль</label>
