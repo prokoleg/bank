@@ -22,6 +22,7 @@ class Mail
 		$headers .= "From: Blanet.Ru <info@blanet.ru>\r\n";
                 $headers .= "X-Mailer: Blanet.Ru";
 
+                // перекодирование заголовка письма для работы с российскими почтовиками
                 self::$subject = "=?UTF-8?B?" . base64_encode("Подтверждение учетной записи") . "?=";
 
 		return mail(self::$to, self::$subject, self::$message, $headers);
