@@ -11,6 +11,8 @@
 $enter_email = $_SESSION['email'];
 $enter_login = $_SESSION['login'];
 
+if ($_GET['verefy'] == $enter_email) {
+
 $database = new Database("UPDATE users SET valid=1 WHERE email='".$enter_email."'");
 $db = $database->getConnection();
 
@@ -22,6 +24,15 @@ $db = $database->getConnection();
 </div>
 <?php
 $db = $database->getCloseDb();
+} else {
+?>
+  <div class="row mb10 m10">
+    <div class="col-6 col-md-4">
+      <h3>Упс...</h3>
+  </div>
+</div>
+<?php  
+}
 endif; ?>
 <?php if(!isset($_SESSION['login'])) {
 header('Location: '.HOME);
