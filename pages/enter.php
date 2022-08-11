@@ -111,7 +111,9 @@ if (!empty($_POST['email'])) {
   $lastname = isset($_POST['lastname']) ? $_POST['lastname'] : '';
   $login = isset($_POST['login']) ? $_POST['login'] : '';
   $email = isset($_POST['email']) ? $_POST['email'] : '';
-  $pass = (isset($_POST['password']) == $_POST['password2']) ? $_POST['password'] : '';
+  //$pass = (isset($_POST['password']) == $_POST['password2']) ? crypt($_POST['password'], '$6$password$') : '';
+  UserIm::$password = $_POST['password'];
+  $pass = (isset($_POST['password']) == $_POST['password2']) ? UserIm::getPass() : '';
   $phone = isset($_POST['phone']) ? $_POST['phone'] : '';
   $city = isset($_POST['city']) ? $_POST['city'] : '';
   $avatar = 'noavatar.png';
@@ -135,10 +137,14 @@ $db = $reg->getCloseDb();
 // Идентификация пользователя (логин в БД)
 if (!empty($_POST['enter_email'])) {
   $enter_email = $_POST['enter_email'];
-  $enter_pass = $_POST['enter_pass'];
+    $singin = new Database("SELECT email, password FROM users WHERE email='".$enter_email."'");
+  $db = $singin->getConnection();
+  while($row = $db->fetch_assoc()) {
+  $enter_pass =  (password_verify($_POST['enter_pass'], $row['password'])) ? $row['password'] : '';
   $remember_me = $_POST['save_me'];
-
+  }
   $_SESSION['email'] = $enter_email;
+  $_SESSION['password'] = $_POST['enter_pass'];
 
   $singin = new Database("SELECT login, email, password, valid, firstname, lastname FROM users WHERE email='".$enter_email."' AND password='".$enter_pass."'");
   $db = $singin->getConnection();

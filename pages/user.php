@@ -37,8 +37,6 @@ echo "<p></p><p><a href='../settings'>Редактировать</a></p>";
 	    		echo "<i class='bi bi-telephone'></i> : ".$row['phone']."<br>";
 	    		echo "<i class='bi bi-building'></i> : ".$row['city']."<br>";
 	    		echo "<i class='bi bi-envelope'></i> : ".$row['email']."<br>";
-	    		$password = new User('', $row['password']);
-	    		echo $password->replacePass(); // password
 
 					SocialLink::$vk_link = $row['vk_link'];
 					SocialLink::$telegram_link = $row['telegram_link'];
