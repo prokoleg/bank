@@ -24,12 +24,8 @@ $db = $database->getConnection();
 </div>
 <?php
 $db = $database->getCloseDb();
-} else {
-
-// если неправильная верификационная ссылка
-header('Location: '.HOME);
 }
 endif; ?>
-<?php if(!isset($_SESSION['login'])) {
+<?php if(!isset($_SESSION['login']) && ($_GET['verefy'] != $enter_email)) {
 header('Location: '.HOME);
 }
