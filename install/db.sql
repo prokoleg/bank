@@ -1,12 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 5.2.0
--- https://www.phpmyadmin.net/
---
--- Хост: localhost
--- Время создания: Авг 07 2022 г., 11:31
--- Версия сервера: 10.7.3-MariaDB
--- Версия PHP: 8.1.8
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -17,16 +8,6 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
---
--- База данных: `test1`
---
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `bank`
---
-
 CREATE TABLE `bank` (
   `id` int(5) NOT NULL,
   `pay` int(10) NOT NULL,
@@ -34,18 +15,10 @@ CREATE TABLE `bank` (
   `date_pay` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Структура таблицы `city`
---
-
 CREATE TABLE `city` (
   `id` int(50) NOT NULL,
   `city` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Дамп данных таблицы `city`
---
 
 INSERT INTO `city` (`id`, `city`) VALUES
 (1, 'Волгоград'),
@@ -74,12 +47,6 @@ INSERT INTO `city` (`id`, `city`) VALUES
 (13, 'Уфа'),
 (11, 'Челябинск');
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `users`
---
-
 CREATE TABLE `users` (
   `id` int(6) NOT NULL,
   `login` varchar(100) NOT NULL,
@@ -98,58 +65,27 @@ CREATE TABLE `users` (
   `save_me` varchar(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Дамп данных таблицы `users`
---
-
 INSERT INTO `users` (`id`, `login`, `email`, `password`, `firstname`, `lastname`, `phone`, `city`, `avatar`, `vk_link`, `telegram_link`, `youtube_link`, `user_group`, `valid`, `save_me`) VALUES
 (1, 'admin', 'my@mail.dn', '12345', 'Вася', 'Иванов', '+79595622322', 'Челябинск', 'admin.jpg', '1', NULL, NULL, 1, 1, 'on');
- 
 
---
--- Индексы сохранённых таблиц
---
-
---
--- Индексы таблицы `bank`
---
 ALTER TABLE `bank`
   ADD PRIMARY KEY (`id`);
 
---
--- Индексы таблицы `city`
---
 ALTER TABLE `city`
   ADD PRIMARY KEY (`id`),
   ADD KEY `city` (`city`);
 
---
--- Индексы таблицы `users`
---
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `login` (`login`),
   ADD UNIQUE KEY `phone` (`phone`);
 
---
--- AUTO_INCREMENT для сохранённых таблиц
---
-
---
--- AUTO_INCREMENT для таблицы `bank`
---
 ALTER TABLE `bank`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
---
--- AUTO_INCREMENT для таблицы `city`
---
 ALTER TABLE `city`
   MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
---
--- AUTO_INCREMENT для таблицы `users`
---
 ALTER TABLE `users`
   MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
