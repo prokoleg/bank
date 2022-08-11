@@ -66,7 +66,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `users` (`id`, `login`, `email`, `password`, `firstname`, `lastname`, `phone`, `city`, `avatar`, `vk_link`, `telegram_link`, `youtube_link`, `user_group`, `valid`, `save_me`) VALUES
-(1, 'admin', 'my@mail.dn', '12345', 'Вася', 'Иванов', '+79595622322', 'Челябинск', 'admin.jpg', '1', NULL, NULL, 1, 1, 'on');
+(1, 'admin', 'my@mail.dn', '$6$password$KnmAYhExeNOZx0lda63U3WPEfT7J5IVhaNUE8wEWKHdzsJnc1LEfZYZQPfmiI4uQ6S5fCXukaGd8fhe8Gd8Bd/', 'Вася', 'Иванов', '+79595622322', 'Челябинск', 'admin.jpg', '1', NULL, NULL, 1, 1, 'on');
 
 ALTER TABLE `bank`
   ADD PRIMARY KEY (`id`);
