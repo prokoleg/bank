@@ -25,13 +25,9 @@ $db = $database->getConnection();
 <?php
 $db = $database->getCloseDb();
 } else {
-?>
-  <div class="row mb10 m10">
-    <div class="col-6 col-md-4">
-      <h3>Упс...</h3>
-  </div>
-</div>
-<?php  
+
+// если неправильная верификационная ссылка
+header('Location: '.HOME);
 }
 endif; ?>
 <?php if(!isset($_SESSION['login'])) {
