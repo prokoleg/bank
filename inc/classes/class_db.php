@@ -19,7 +19,8 @@ class Database {
 
         return $this->conn->query($this->sql);
     }
-    public function getCliseDb(){
+
+    public function getCloseDb(){
         return $this->conn->close();
     }
 }

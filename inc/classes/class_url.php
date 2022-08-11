@@ -46,7 +46,7 @@ class Url
 	public static function urlString()
 	{
 		if (!$_GET) {
-			include ('pages/index.php');
+			require_once ('pages/index.php');
 		}
 		if (isset($_GET['link'])) {
 			if ($_GET['link'] == 'pay') {
