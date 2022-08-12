@@ -13,6 +13,7 @@ if ($_GET) {
 		$label_link = ($key == 'replace_vk') ? "Вконтакте" : "YouTube";
 ?>
 	<h1>Редактор ссылки на <?= $label_link; ?></h1>
+  <p class="center"><em>Если вы хотите удалить ссылку, то просто отправльте пустой запрос</em></p>
 	  <div class="row mb10 m10">
     <?php
     echo Menu::getSettingMenu();
@@ -26,11 +27,11 @@ if (isset($_POST[$key])) {
   $enter_email = $_SESSION['email'];
   foreach($_POST as $key => $value)
 
-  if(isset($_POST['replace_vk'])) {
+  if(isset($_POST['replace_vk']) || (isset($_POST['add_vk']))) {
   	$link = $_POST[$key];
   	$row = 'vk_link';
   }
-    if(isset($_POST['replace_youtube'])) {
+    if(isset($_POST['replace_youtube']) || (isset($_POST['add_youtube']))) {
   	$link = $_POST[$key];
   	$row = 'youtube_link';
   }
