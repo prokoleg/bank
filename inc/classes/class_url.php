@@ -80,6 +80,8 @@ class Url
 			include ('pages/settings/pass.php');
 		} elseif (isset($_GET['replace_vk']) || isset($_GET['replace_youtube'])) {
 			include ('pages/settings/social.php');
+		} elseif (isset($_GET['add_vk']) || isset($_GET['add_youtube'])) {
+			include ('pages/settings/social.php');
 		}
 		return;
 	}
