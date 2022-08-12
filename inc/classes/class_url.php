@@ -78,6 +78,8 @@ class Url
 			include ('pages/settings/avatar.php');
 		} elseif (isset($_GET['pass'])) {
 			include ('pages/settings/pass.php');
+		} elseif (isset($_GET['replace_vk']) || isset($_GET['replace_youtube'])) {
+			include ('pages/settings/social.php');
 		}
 		return;
 	}
