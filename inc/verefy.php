@@ -10,9 +10,8 @@
 
 $enter_email = $_SESSION['email'];
 $enter_login = $_SESSION['login'];
-Mail::$verefy_code = md5($enter_email);
 
-if ($_GET['verefy'] == Mail::$verefy_code) {
+if ($_GET['verefy'] == md5($enter_email)) {
 
 $database = new Database("UPDATE users SET valid=1 WHERE email='".$enter_email."'");
 $db = $database->getConnection();
@@ -32,9 +31,8 @@ $db = $database->getCloseDb();
       <h3>Упс...</h3>
   </div>
 </div>
-<?php  
+<?php
 }
-endif; ?>
-<?php if(!isset($_SESSION['login']) {
+endif;
+
 header('Location: '.HOME);
-}
