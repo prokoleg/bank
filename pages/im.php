@@ -36,7 +36,7 @@ user::$group = $row['user_group'];
 user::getGroup();
 
 SocialLink::$vk_link = $row['vk_link'];
-SocialLink::$telegram_link = $row['telegram_link'];
+SocialLink::$telegram_link = $row['phone'];
 SocialLink::$youtube_link = $row['youtube_link'];
 echo "<br>";
 SocialLink::socialLink();
