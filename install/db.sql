@@ -58,15 +58,14 @@ CREATE TABLE `users` (
   `city` varchar(100) NOT NULL,
   `avatar` varchar(200) NOT NULL,
   `vk_link` varchar(200) DEFAULT NULL,
-  `telegram_link` varchar(200) DEFAULT NULL,
   `youtube_link` varchar(200) DEFAULT NULL,
   `user_group` int(2) DEFAULT 2,
   `valid` int(1) NOT NULL DEFAULT 0,
   `save_me` varchar(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `users` (`id`, `login`, `email`, `password`, `firstname`, `lastname`, `phone`, `city`, `avatar`, `vk_link`, `telegram_link`, `youtube_link`, `user_group`, `valid`, `save_me`) VALUES
-(1, 'admin', 'my@mail.dn', '$6$password$KnmAYhExeNOZx0lda63U3WPEfT7J5IVhaNUE8wEWKHdzsJnc1LEfZYZQPfmiI4uQ6S5fCXukaGd8fhe8Gd8Bd/', 'Вася', 'Иванов', '+79595622322', 'Челябинск', 'admin.jpg', '1', NULL, NULL, 1, 1, 'on');
+INSERT INTO `users` (`id`, `login`, `email`, `password`, `firstname`, `lastname`, `phone`, `city`, `avatar`, `vk_link`, `youtube_link`, `user_group`, `valid`, `save_me`) VALUES
+(1, 'admin', 'my@mail.dn', '$6$password$KnmAYhExeNOZx0lda63U3WPEfT7J5IVhaNUE8wEWKHdzsJnc1LEfZYZQPfmiI4uQ6S5fCXukaGd8fhe8Gd8Bd/', 'Вася', 'Иванов', '+79595622322', 'Челябинск', 'admin.jpg', '1', NULL, 1, 1, 'on');
 
 ALTER TABLE `bank`
   ADD PRIMARY KEY (`id`);
