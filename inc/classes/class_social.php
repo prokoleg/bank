@@ -39,6 +39,7 @@ class SocialLink
 class Sl
 {
 	public $social_link;
+	public $label_link;
 
 	function __construct($social_link)
 	{
@@ -48,14 +49,15 @@ class Sl
 	function getSl()
 	{
 		foreach($_GET as $key => $value)
+			$this->label_link = ($this->social_link == 'replace_vk') ? "Вконтакте" : "YouTube";
 		$html = "<div class='col-md-6'>
-				<form method='post'class='row g-3 mt10'>
+				<form method='post' class='row g-3 mt10'>
 	    		<div class='col-md-6'>
-				<label>".$this->social_link."</label>
+				<label>Введите ID аккаунта ".$this->label_link."</label>
 				<input type='text' name='".$key."' class='form-control'>
 				</div>
 				<div class='col-12'>
-				<button type='submit' class='btn btn-outline-primary btn-lg btn-block mb10 m2'>ok</button>
+				<button type='submit' class='btn btn-outline-primary btn-lg btn-block mb10 m2'>Сохранить</button>
 				</div>
 			</form></div>";
 		return $html;
