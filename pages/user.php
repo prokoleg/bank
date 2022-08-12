@@ -39,7 +39,7 @@ echo "<p></p><p><a href='../settings'>Редактировать</a></p>";
 	    		echo "<i class='bi bi-envelope'></i> : ".$row['email']."<br>";
 
 					SocialLink::$vk_link = $row['vk_link'];
-					SocialLink::$telegram_link = $row['telegram_link'];
+					SocialLink::$telegram_link = $row['phone'];
 					SocialLink::$youtube_link = $row['youtube_link'];
 					echo "<br>";
 					SocialLink::userSocialLink();
