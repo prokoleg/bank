@@ -16,11 +16,11 @@ class SocialLink
 	// Социальные сети в профиле (можно редактировать)
 	public static function userSocialLink()
 	{
-		echo (self::$vk_link !=null) ? '<a href="#replace_vk" target="_blank"><i class="bi bi-bootstrap mr10"></i></a>' : '<a href="#add_vk"><i class="bi bi-plus-square-dotted mr10"></i></a>';
+		echo (self::$vk_link !=null) ? '<a href="./?replace_vk"><i class="bi bi-bootstrap mr10"></i></a>' : '<a href="./?add_vk"><i class="bi bi-plus-square-dotted mr10"></i></a>';
 		
-		echo (self::$telegram_link != null) ? '<a href="#replace_telegram" target="_blank"><i class="bi bi-telegram mr10"></i></a>' : '<a href="#add_telegram"><i class="bi bi-plus-square-dotted mr10"></i></a>';
+		echo (self::$telegram_link != null) ? '<a href="https://t.me/'.self::$telegram_link.'" target="_blank" title="Заменить нельзя"><i class="bi bi-telegram mr10"></i></a>' : null;
 		
-		echo (self::$youtube_link !=null) ? '<a href="#replace_youtube" target="_blank"><i class="bi bi-youtube mr10"></i></a>' : '<a href="#add_youtube"><i class="bi bi-plus-square-dotted mr10"></i></a>';
+		echo (self::$youtube_link !=null) ? '<a href="./?replace_youtube"><i class="bi bi-youtube mr10"></i></a>' : '<a href="./?add_youtube"><i class="bi bi-plus-square-dotted mr10"></i></a>';
 		return;
 	}
 
@@ -31,7 +31,33 @@ class SocialLink
 		
 		echo (self::$telegram_link != null) ? '<a href="https://t.me/'.self::$telegram_link.'" target="_blank"><i class="bi bi-telegram mr10"></i></a>' : null;
 		
-		echo (self::$youtube_link !=null) ? '<a href="'.self::$youtube_link.'" target="_blank"><i class="bi bi-youtube mr10"></i></a>' : null;
+		echo (self::$youtube_link !=null) ? '<a href="https://www.youtube.com/channel/'.self::$youtube_link.'" target="_blank"><i class="bi bi-youtube mr10"></i></a>' : null;
 		return;
+	}
+}
+
+class Sl
+{
+	public $social_link;
+
+	function __construct($social_link)
+	{
+		$this->social_link = $social_link;
+	}
+
+	function getSl()
+	{
+		foreach($_GET as $key => $value)
+		$html = "<div class='col-md-6'>
+				<form method='post'class='row g-3 mt10'>
+	    		<div class='col-md-6'>
+				<label>".$this->social_link."</label>
+				<input type='text' name='".$key."' class='form-control'>
+				</div>
+				<div class='col-12'>
+				<button type='submit' class='btn btn-outline-primary btn-lg btn-block mb10 m2'>ok</button>
+				</div>
+			</form></div>";
+		return $html;
 	}
 }
