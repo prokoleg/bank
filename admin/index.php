@@ -9,7 +9,7 @@
 
 session_start();
 // Всякие инклюды
-    include ('../../inc/config.php');
+    require_once ('../inc/config.php');
 if ($_SESSION['user_group'] == 1) {
 ?>
 <!doctype html>
