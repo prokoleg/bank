@@ -6,6 +6,14 @@
 // его автора Прокофьева Олега (info@blanet.ru)
 // Незаконное использование и распространение скрипта ЗАПРЕЩЕНО
 // Скрипт распространяется по лицензии MIT
+
+$home = $_SERVER['REQUEST_SCHEME']."://".$_SERVER['SERVER_NAME'];
+
+if (file_exists('inc/config.php')) {
+    header("Location: $home");
+}
+
+if (!file_exists('inc/config.php')) :
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -120,7 +128,7 @@ endif;
 
 if(isset($_POST['step3'])) :
 ?>
-        <h1>Шаг 4</h1>
+        <h1>Шаг 3.1</h1>
   <h5>Конфигурационный файл</h5>
   <p>Введите пароль для гостевого доступа (он будет один для всех гостей)</p>
 <form method="post">
@@ -131,25 +139,42 @@ if(isset($_POST['step3'])) :
       <input type="text" name="guestpass" class="form-control" id="guestpass" placeholder="1234" disabled>
     </div>
   </div>
-  <input type="submit" value="Далее" class="btn btn-outline-primary btn-lg btn-block mb10 m2" name="step4">
+  <input type="submit" value="Далее" class="btn btn-outline-primary btn-lg btn-block mb10 m2" name="step31">
 </form>
 <?php
 endif;
 
-if(isset($_POST['step3'])) :
-$config_data = "
+if(isset($_POST['step31'])) :
+  $config_data = "
 
 // Гостевой пароль :)
 define('USERPASS', '1234');
 ";
 echo file_put_contents('../inc/config.php', $config_data, FILE_APPEND | LOCK_EX) ? '' : "<code>Увы, что-то пошло не так</code>";
+?>
+        <h1>Шаг 4</h1>
+  <h5>Конфигурационный файл</h5>
+  <p>Введите название вашего сайта</p>
+<form method="post">
 
+  <div class="mb-3 row">
+    <label for="namesite" class="col-sm-2 col-form-label">Гостевой пароль</label>
+    <div class="col-sm-10">
+      <input type="text" name="namesite" class="form-control" id="namesite" placeholder="1234" disabled>
+    </div>
+  </div>
+  <input type="submit" value="Далее" class="btn btn-outline-primary btn-lg btn-block mb10 m2" name="step4">
+</form>
+<?php
 endif;
 
 if(isset($_POST['step4'])) :
+$config_data = "
 
-// $adminlogin = $_POST['adminlogin'];
-// $adminpass = $_POST['adminpass'];
+// Имя сайта
+define('SITENAME', '".$_POST['step4']."');
+";
+echo file_put_contents('../inc/config.php', $config_data, FILE_APPEND | LOCK_EX) ? '' : "<code>Увы, что-то пошло не так</code>";
 
 include_once ('../inc/config.php');
 $conn = new mysqli(HOST, USER, PASS, DATABASE);
@@ -158,8 +183,9 @@ $conn->multi_query(file_get_contents('db.sql'));
 $conn->close();
 echo "<h1>Поздравляем!</h1>
 <p>Запись конфигурационного файла прошла успешно</p>
-<p>Теперь ты можешь перейти на <a href=".HOME.">главную</a> страницу сайта или войти в <a href=".HOME."/singin>админ-панель</a>(my@mail.dn / 12345)</p>";
+<p>Теперь ты можешь перейти на <a href=".HOME.">главную</a> страницу сайта или войти в <a href=".HOME."/singin>личный кабинет</a>(my@mail.dn / 12345) и обновить свои данные</p>";
 endif;
+  endif;
 ?>
 </body>
 </html>
