@@ -39,20 +39,10 @@
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="../cabinet"><i class="bi bi-info-square"></i> Личный кабинет</a></li>
 <?php
-
-// Вывод загруженного аватара
-$database = new Database("SELECT * FROM users WHERE user_group=1 AND email='".$_SESSION['email']."'");
-$db = $database->getConnection();
-
-while ($row = $db->fetch_assoc()) {
-  if ($row > 0) :
+if ($_SESSION['user_group'] == User::getNumberGroup()) {
 ?>
             <li><a class='dropdown-item' href='../admin'><i class="bi bi-diagram-3"></i> Админпанель</a></li>
-<?php
-endif;
-}
-$db = $database->getCloseDb();
-?>
+<?php } ?>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="../logout"><i class="bi bi-box-arrow-right"></i> Выход</a></li>
           </ul>
