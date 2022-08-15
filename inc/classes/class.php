@@ -72,6 +72,11 @@ class User
 		return;
 	}
 
+	public static function getNumberGroup()
+	{
+		self:: $group = $_SESSION['user_group'];
+		return self::$group;
+	}
 }
 
 class Menu
