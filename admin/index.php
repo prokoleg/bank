@@ -222,6 +222,7 @@ if ($_SESSION['user_group'] == 1) {
           <tbody>
 <?php
 // получаем соединение с базой данных
+	include ('../../inc/config.php');
 $conn = new mysqli(HOST, USER, PASS, DATABASE);
 $sql = "SELECT id, avatar, login, firstname, lastname, email, city, user_group FROM users";
 $result = $conn->query($sql);
