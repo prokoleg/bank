@@ -9,7 +9,7 @@
 
 session_start();
 // Всякие инклюды
-    require_once ('../inc/config.php');
+    include ('../../inc/config.php');
 if ($_SESSION['user_group'] == 1) {
 ?>
 <!doctype html>
@@ -222,7 +222,7 @@ if ($_SESSION['user_group'] == 1) {
           <tbody>
 <?php
 // получаем соединение с базой данных
-$conn = new mysqli('localhost', 'root', '7012', 'test1');
+$conn = new mysqli(HOST, USER, PASS, DATABASE);
 $sql = "SELECT id, avatar, login, firstname, lastname, email, city, user_group FROM users";
 $result = $conn->query($sql);
 while($row = mysqli_fetch_array($result))
