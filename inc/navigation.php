@@ -39,7 +39,7 @@
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="../cabinet"><i class="bi bi-info-square"></i> Личный кабинет</a></li>
 <?php
-if ($_SESSION['user_group'] == User::getNumberGroup()) {
+if ($_SESSION['user_group'] == User::getAdminGroup()) {
 ?>
             <li><a class='dropdown-item' href='../admin'><i class="bi bi-diagram-3"></i> Админпанель</a></li>
 <?php } ?>
