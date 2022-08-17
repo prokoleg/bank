@@ -72,9 +72,9 @@ class User
 		return;
 	}
 
-	public static function getNumberGroup()
+	public static function getAdminGroup()
 	{
-		self:: $group = $_SESSION['user_group'];
+		self:: $group = 1;
 		return self::$group;
 	}
 }
