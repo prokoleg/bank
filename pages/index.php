@@ -28,7 +28,9 @@ if ($db->num_rows > 0) {
   while($row = $db->fetch_assoc()) {
     $sum += $row['pay'];
   }
-}
+} else {
+  	$sum = null;
+  }
 
 ?>
 <h1 class="m5 mb5">Альтернативные алименты</h1>
@@ -37,6 +39,6 @@ if ($db->num_rows > 0) {
 <?php if(!$_SESSION && !isset($_SESSION['login'])) : ?>
 <p>Совершив регистрацию, тебе будут доступны дополнительные функции, которые не доступны для гостей (полный отчет по счету, график пополнений, кто вносил, баланс счета, и многое другое). <a href="../registration">Регистрируйся</a> и <a href="../singin">входи</a>, чтобы ощутить в полном объеме весь функционал сайта!</p>
 <?php endif; ?>
-<p class="center">До совершеннолетия Маши осталось <strong><code><?= $num_days; ?></code></strong> месяцев. Уже накоплено <?php if(!$_SESSION && !isset($_SESSION['login'])) : ?>(<a href="../registration">требуется регистрация</a>)<?php endif; ?><?php if($_SESSION && isset($_SESSION['login'])) { echo "<strong><code>".$sum."0</code></strong>" ; } ?> рублей</p>
+<p class="center">До совершеннолетия Маши осталось <strong><code><?= $num_days; ?></code></strong> месяцев. Уже накоплено <?php if(!$_SESSION && !isset($_SESSION['login'])) : ?>(<a href="../registration">требуется регистрация</a>)<?php endif; ?><?php if($_SESSION && isset($_SESSION['login'])) { echo "<strong><code>".$sum."</code></strong>" ; } ?> рублей</p>
 </div>
 <?php $db = $pay_count->getCloseDb(); ?>
