@@ -72,7 +72,22 @@ while($row = mysqli_fetch_array($result))
 
 }
 
-//var_dump($_GET);
+if (isset($_GET['del'])) {
+  $userid = $_GET['del'];
+
+    // Удаляем юзера
+    $database = new Database("SELECT id, avatar FROM users WHERE id='".$userid."'");
+    $db = $database->getConnection();
+    while ($row = $db->fetch_assoc()) {
+    $avatar = $row['avatar'];
+    }
+
+    $database = new Database("DELETE FROM users WHERE id='".$userid."'");
+    $db = $database->getConnection();
+
+  $delete = new Delete($userid, $avatar);
+  echo $delete->UserDelete();
+}
 	
   $conn->close();
 
