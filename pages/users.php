@@ -1,6 +1,6 @@
 <?php if($_SESSION && isset($_SESSION['login'])) : ?>
 <!-- Вывод всех транзакций -->
-	<h1 class="m5 mb5">Пользователи</h1>
+  <h1 class="m5 mb5">Пользователи</h1>
 <table class="table table-hover table-bordered">
   <thead class="table-light">
     <tr>
@@ -8,7 +8,7 @@
     </tr>
   </thead>
   <tbody>
-  	<tr><td>
+    <tr><td>
 <?php
 // получаем соединение с базой данных
 $database = new Database("SELECT login, avatar, user_group FROM users");
@@ -16,8 +16,8 @@ $db = $database->getConnection();
 
 if ($db->num_rows > 0) {
   while($row = $db->fetch_assoc()) {
-  	$users = new User($row['login'], '');
-  	$avatar = new Pictures($row['avatar']);
+    $users = new User($row['login'], '');
+    $avatar = new Pictures($row['avatar']);
 
     if($row['user_group'] == 1) {
       $border = 'avatar_border_admin';
@@ -25,7 +25,7 @@ if ($db->num_rows > 0) {
       $border = 'avatar_border_user';
     }
 
-  	echo "\t<div class='avatar center mr10'><a href='user/".$users->getUserName()."'><img src='".$avatar->getAvatar()."' height='60px' width='60px' alt='".$avatar->getAvatar()."' title='".$users->getUserName()."' class='avatar_border ".$border." avatar_margin_right'></a><br>".$row['login']."</div>\n";
+    echo "\t<div class='avatar center mr10'><a href='user/".$users->getUserName()."'><img src='".$avatar->getAvatar()."' height='60px' width='60px' alt='".$avatar->getAvatar()."' title='".$users->getUserName()."' class='avatar_border ".$border." avatar_margin_right'></a><br>".$row['login']."</div>\n";
   }  
   $db = $database->getCloseDb();
 } else {
@@ -54,6 +54,7 @@ echo "\n</td></tr>";
 }
  // $db = $database->getCloseDb();
 }
+
 ?>
 </footer>
 </table>

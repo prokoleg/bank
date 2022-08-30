@@ -33,7 +33,8 @@ if ($db->num_rows > 0) {
 $database = new Database("ALTER TABLE bank AUTO_INCREMENT=0");
 $db = $database->getConnection();
 if (($db === TRUE) && ($valid == 1)) {
-$database = new Database("INSERT INTO bank (pay, user) VALUES ('".$pay."', '".$username."')");
+	
+$database = new Database("INSERT INTO bank (pay, user, date_pay) VALUES ('".$pay."', '".$username."', '".TimeShtamp::getDate()."')");
 	$db = $database->getConnection();
 }
 if ($db === FALSE) {
