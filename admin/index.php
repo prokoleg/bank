@@ -9,9 +9,13 @@
 
 session_start();
 // Всякие инклюды
-    require_once ('../inc/config.php');
-    define('ADMIN', HOME.'/admin');
+$protocol = "http".(isset($_SERVER['HTTPS']) ? "s" : "");
+$home = $protocol."://".$_SERVER['HTTP_HOST'];
+$title = 'Blanet.ru';
+$admintitle = 'Админпанель';
+
 if ($_SESSION['user_group'] == 1) {
+    define('ADMIN', $home.'/admin');
 
 // Подключение классов
 foreach (glob('classes/*.php') as $filename)
@@ -19,7 +23,21 @@ foreach (glob('classes/*.php') as $filename)
     include $filename;
 }
 
+// получение данных платежей
+$arr = array(null, null, null, null, null, null);
+include_once ('../inc/config.php');
+$conn = new mysqli(HOST, USER, PASS, DATABASE);
+  $sql = "SELECT id, pay, user, date_pay FROM bank";
+  $result = $conn->query($sql);
+
+  if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    $arr[] .= $row['pay'];
+  }
+}
 ?>
+
 <!doctype html>
 <html lang="ru">
   <head>
@@ -28,7 +46,7 @@ foreach (glob('classes/*.php') as $filename)
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.101.0">
-    <title>Админпанель Blanet.ru</title>
+    <title><?= $admintitle." ".$title; ?></title>
     <!-- <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/"> -->
 	<link href="https://getbootstrap.com/docs/5.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
   <link href="css/style.css" rel="stylesheet" crossorigin="anonymous">
@@ -121,14 +139,11 @@ Links::Url();
 </main>
   </div>
 </div>
-
-
     <script src="https://getbootstrap.com/docs/5.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
       <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
       <!-- <script src="../admin/js/dashboard1.js"></script> -->
-
 <script>
   /* globals Chart:false, feather:false */
 (() => {
@@ -143,13 +158,18 @@ Links::Url();
     type: 'line',
     data: {
       labels: [
-          'Понедельник',
-          'Вторник',
-          'Среда',
-          'Четверг',
-          'Пятница',
-          'Суббота',
-          'Воскресенье'
+          'Январь',
+          'Февраль',
+          'Март',
+          'Апрель',
+          'Май',
+          'Июнь',
+          'Июль',
+          'Август',
+          'Сентябрь',
+          'Октябрь',
+          'Ноябрь',
+          'Декабрь'
       ],
       datasets: [{
       /*  data: [
@@ -163,7 +183,8 @@ Links::Url();
         ],*/
         data: [
 <?php // внесение данных в график через рнр
-        $arr = array(1,1.5,2,2.7,3,3.2,3);
+
+        $arr = array_slice($arr, -12, 12);
 foreach ($arr as $key => $value) {
   echo "\t\t\t".$value.",\n";
 }?>        ],
@@ -178,7 +199,7 @@ foreach ($arr as $key => $value) {
       scales: {
         yAxes: [{
           ticks: {
-            beginAtZero: false
+            beginAtZero: true
           }
         }]
       },
@@ -195,6 +216,5 @@ foreach ($arr as $key => $value) {
 <?php
 } 
 if ($_SESSION['user_group'] != 1) {
-require_once ('../inc/config.php');
 header('Location: '.HOME);
 }
