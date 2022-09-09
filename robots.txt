@@ -6,3 +6,6 @@ Disallow: /pages
 Disallow: /turbo
 Disallow: /inc
 Disallow: /404.php
+Disallow: /yandex_f1d8822cd5ca9932.html
+Host: bank.blanet.ru
+Sitemap: http://bank.blanet.ru/Sitemap.xml

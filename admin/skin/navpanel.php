@@ -4,7 +4,7 @@
       <li class="nav-item">
         <a class="nav-link active" aria-current="page" href="<?= ADMIN ?>">
           <span data-feather="home" class="align-text-bottom"></span>
-          Админпанель
+          <?= $admintitle; ?>
         </a>
       </li>
       <li class="nav-item">

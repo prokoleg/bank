@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+ <rss xmlns:yandex="http://news.yandex.ru" xmlns:media="http://search.yahoo.com/mrss/" xmlns:turbo="http://turbo.yandex.ru" version="2.0">
+ <channel><item turbo="true">
+  <title>Перевод по QR-коду</title>
+	<language>ru</language>
+ <author>https://bank.blanet.ru</author>
+ <yandex:analytics type="Yandex" id="82144468"/>
+   <link>https://bank.blanet.ru/?link=qr</link>
+ <turbo:content>
+    <![CDATA[
+      <header>
+        <h1>Перевод по QR-коду</h1>
+        <h2>Чтобы сделать взнос по QR-коду, отсканируйте этот код вашим банковским приложением</h2>
+      </header>
+
+<div>
+<figure><img src="https://bank.blanet.ru/img/qr-pay-masha.png"></figure>
+<p>Если вам удалось сделать перевод, просьба сообщить об этом (вложить скриншот перевода) в <a href="https://vk.com/wall17813885_1476" rel="nofollow" target="_blank">комментариях</a>
+или в <a href="https://vk.com/im?sel=17813885" rel="nofollow" target="_blank">личные сообщения</a></p>
+</div>
+
+
+<br clear="all">
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(89686765, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+</script>
+<!-- /Yandex.Metrika counter -->
+    ]]>
+  </turbo:content>
+</item>
+</channel>
+</rss>

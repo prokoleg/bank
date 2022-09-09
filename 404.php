@@ -9,7 +9,12 @@
 <body>
 <div class="container">
 <?php
-$id = $argv[0];
+
+if (empty($id)) {
+	$id = '';
+} else {
+	$id = $argv[0];
+}
 $id = abs(intval($id));
 if (!$id) $id = 404;
 
@@ -32,7 +37,9 @@ $body =<<<END
 Ваш браузер: <b>{$_SERVER['HTTP_USER_AGENT']}</b><br />
 Текущее время сервера: <b>$time</b><br />
 END;
-if ($_SERVER['HTTP_REFERER']) $body .= "Вы пришли со страницы: <b>{$_SERVER['HTTP_REFERER']}</b><br />\n";
+if (isset($_SERVER['HTTP_REFERER'])) {
+	$body .= "Вы пришли со страницы: <b>{$_SERVER['HTTP_REFERER']}</b><br />\n";
+}
 // if ($_SERVER['HTTP_X_FORWARDER_FOR']) $body .= "Ваш IP через прокси: <b>{$_SERVER['HTTP_X_FORWARDER_FOR']}</b><br />\n";
 ?>
 <h1><i><?=$id?></i> <?=$a[$id]?></h1>

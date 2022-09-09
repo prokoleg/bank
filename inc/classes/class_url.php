@@ -2,45 +2,67 @@
 
 class Url
 {
+	public static $title;
+	public static $description;
+
 	public static function getTitle()
 	{
 		if (isset($_GET['link'])) {
 			if (REQUEST == 'link=pay') {
-				$title = 'Таблица взносов';
+				self::$title = 'Таблица взносов';
+				echo self::$title;
 			} elseif (REQUEST == 'link=insert_pay') {
-				$title = 'Внести';
+				self::$title = 'Внести';
+				echo self::$title;
 			} elseif (REQUEST == 'link=enter&registration=false') {
-				$title = 'Вход';
+				self::$title = 'Вход';
+				echo self::$title;
 			} elseif (REQUEST == 'link=enter&registration=true') {
-				$title = 'Регистрация';
+				self::$title = 'Регистрация';
+				echo self::$title;
 			} elseif (REQUEST == 'link=exit') {
-				$title = 'Выход';
+				self::$title = 'Выход';
+				echo self::$title;
 			} elseif (REQUEST == 'link=qr') {
-				$title = 'Перевод по QR-коду';
+				self::$title = 'Перевод по QR-коду';
+				echo self::$title;
 			} elseif (REQUEST == 'link=settings') {
-				$title = 'Настройки';
+				self::$title = 'Настройки';
+				echo self::$title;
 			} elseif (REQUEST == 'setting=name') {
-				$title = 'Настройки имени';
+				self::$title = 'Настройки имени';
+				echo self::$title;
 			} elseif (REQUEST == 'link=user') {
-				$title = 'Личный кабинет';
+				self::$title = 'Личный кабинет';
+				echo self::$title;
 			} elseif (REQUEST == 'link=users') {
-				$title = 'Пользователи';
+				self::$title = 'Пользователи';
+				echo self::$title;
 			} elseif (REQUEST == 'name') {
-				$title = 'Сменить имя';
+				self::$title = 'Сменить имя';
+				echo self::$title;
 			} elseif (REQUEST == 'avatar') {
-				$title = 'Сменить аватар';
+				self::$title = 'Сменить аватар';
+				echo self::$title;
 			} elseif (REQUEST == 'link=users') {
-				$title = 'Пользователи';
+				self::$title = 'Пользователи';
+				echo self::$title;
 			} else {
-				$title = '';
+				self::$title = '';
+				echo self::$title;
 			}
-		return $title;
+		return;
 		}
 		if (isset($_GET['im'])) {
-			$title = "Пользователь ".$_GET['im'];
-			return $title;
+			self::$title = "Пользователь ".$_GET['im'];
+				echo self::$title;
+			return;
 		}
-			return "Главная";
+			self::$title = "Главная";
+				echo self::$title;
+			self::$description = "";
+				echo self::$description;				
+			return;
 		}
 
 	public static function urlString()

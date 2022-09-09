@@ -13,7 +13,7 @@ class Mail
 	public static $to;
 	public static $from = "no-reply@blanet.ru";
 	private static $subject;
-    	public static $message;
+    public static $message;
 	public static $login;
 
 	public static function MailVerefy()

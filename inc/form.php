@@ -7,7 +7,7 @@
  </div>
 <div class="mb-3">
   <label for="data-form" class="form-label">Дата внесения</label>
-  <input type="text" name="data" class="form-control" readonly value="<?php echo date('Y-m-d H:i:s'); ?>" id="data-form"/>
+  <input type="text" name="data" class="form-control" readonly value="<?php echo TimeShtamp::getDate(); ?>" id="data-form"/>
 </div>
 <?php if(!$_SESSION) : ?>
 <div class="mb-3">

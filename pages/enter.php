@@ -57,7 +57,6 @@
     <div class="col-md-6">
     <label for="inputEmail4" class="form-label">Email</label>
     <input name="email" type="email" class="form-control" id="inputEmail4" required="required">
-      (<code>пожалуйста, не используйте почту yandex</code>)
   </div>
   <div class="col-md-6">
     <label for="inputPassword" class="form-label">Пароль</label>
@@ -118,12 +117,13 @@ if (!empty($_POST['email'])) {
   $phone = isset($_POST['phone']) ? $_POST['phone'] : '';
   $city = isset($_POST['city']) ? $_POST['city'] : '';
   $avatar = 'noavatar.png';
+  $ip = $_SERVER['REMOTE_ADDR'];
   $save_me = isset($_POST['save_me']) ? $_POST['save_me'] : '';
 
 $reg = new Database("ALTER TABLE users AUTO_INCREMENT=0");
 $db = $reg->getConnection();
 if ($db === TRUE) {
-$reg = new Database("INSERT INTO users (firstname, lastname, login, email, password, phone, city, avatar, save_me) VALUES ('".$firstname."', '".$lastname."', '".$login."', '".$email."', '".$pass."', '".$phone."', '".$city."', '".$avatar."', '".$save_me."')");
+$reg = new Database("INSERT INTO users (firstname, lastname, login, email, password, phone, city, avatar, ip, save_me) VALUES ('".$firstname."', '".$lastname."', '".$login."', '".$email."', '".$pass."', '".$phone."', '".$city."', '".$avatar."', '".$ip."', '".$save_me."')");
   $db = $reg->getConnection();
 }
 
@@ -138,6 +138,7 @@ $db = $reg->getCloseDb();
 // Идентификация пользователя (логин в БД)
 if (!empty($_POST['enter_email'])) {
   $enter_email = $_POST['enter_email'];
+
     $singin = new Database("SELECT email, password FROM users WHERE email='".$enter_email."'");
   $db = $singin->getConnection();
   while($row = $db->fetch_assoc()) {
@@ -147,14 +148,20 @@ if (!empty($_POST['enter_email'])) {
   $_SESSION['email'] = $enter_email;
   $_SESSION['password'] = $_POST['enter_pass'];
 
-  $singin = new Database("SELECT login, email, password, valid, firstname, lastname FROM users WHERE email='".$enter_email."' AND password='".$enter_pass."'");
+  $singin = new Database("SELECT login, email, password, valid, firstname, lastname, user_group FROM users WHERE email='".$enter_email."' AND password='".$enter_pass."'");
   $db = $singin->getConnection();
 while($row = $db->fetch_assoc()) {
   $_SESSION['firstname'] = $row['firstname'];
   $_SESSION['lastname'] = $row['lastname'];
   $_SESSION['login'] = $row['login'];
+  $_SESSION['user_group'] = $row['user_group'];
+
   echo (($row['email'] === $enter_email) && ($row['password'] === $_POST['enter_pass'])) ? "Вы вошли как {$enter_email}" : (($row['valid'] === 0) ? "<code>Запросите у администрации валидации вашего аккаунта</code>" : "Введите пароль или email");
 }
+  $ip = $_SERVER['REMOTE_ADDR'];
+$singin = new Database("UPDATE users SET ip='".$ip."' WHERE email='".$enter_email."'");
+$db = $singin->getConnection();
+
 $db = $singin->getCloseDb();
   echo "<meta http-equiv='refresh' content='0; URL=".HOME."'>";
 }

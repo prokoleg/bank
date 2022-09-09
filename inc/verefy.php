@@ -19,8 +19,8 @@ $db = $database->getConnection();
 ?>
   <div class="row mb10 m10">
     <div class="col-6 col-md-4">
-      <h3>Поздравляем! Ваша учетная запись активна</h3>
-  </div>
+    	<h3>Поздравляем, <?= echo $enter_login; ?>! Ваша учетная запись активна</h3>
+	</div>
 </div>
 <?php
 $db = $database->getCloseDb();
@@ -28,17 +28,10 @@ $db = $database->getCloseDb();
 ?>
   <div class="row mb10 m10">
     <div class="col-6 col-md-4">
-      <h3>Упс. Что-то пошло не так...</h3>
-      <h5>Если Вы реальный пользователь, то проверьте:</h5>
-      <ul>
-      <li>Правильно ли вы ввели код верефикации</li>
-      <li>Не используете ли вы сервисы VPN</li>
-      <li>Вы точно реальный пользователь?</li>
-      </ul>
+      <h3>Упс...</h3>
   </div>
 </div>
 <?php
 }
-endif;
-
-header('Location: '.HOME);
+endif; ?>
+<?php header('Location: '.HOME);

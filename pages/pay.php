@@ -8,7 +8,7 @@
       <th scope="col">#</th>
       <th scope="col">Сумма</th>
       <th scope="col">Кто внес</th>
-      <th scope="col">Дата(г.м.д), время(ч.м.с)</th>
+      <th scope="col">Дата и время</th>
     </tr>
   </thead>
   <tbody>

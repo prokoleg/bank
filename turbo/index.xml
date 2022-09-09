@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+ <rss xmlns:yandex="http://news.yandex.ru" xmlns:media="http://search.yahoo.com/mrss/" xmlns:turbo="http://turbo.yandex.ru" version="2.0">
+ <channel><item turbo="true">
+  <title>Главная</title>
+	<language>ru</language>
+ <author>https://bank.blanet.ru</author>
+ <yandex:analytics type="Yandex" id="82144468"/>
+   <link>https://bank.blanet.ru/</link>
+ <turbo:content>
+    <![CDATA[
+      <header>
+        <h1>Альтернативные алименты</h1>
+        <h2>Альтернативные алименты, накопленные на будущее моей дочери Марии Прокофьевой</h2>
+      </header>
+<div style="width: 90%; margin: 0 auto; text-align: justify;">
+<figure><img src="https://bank.blanet.ru/img/cover.jpg"></figure>
+<p>Приветствую! Ты находишься на сайте контроля взносов для несовершеннолетней Марии Прокофьевой. Я, Прокофьев Олег, являюсь PHP-программистом, а также любящим отцом Маруси. К сожалению, я не имею возможности учавствовать в воспитании моей доченьки, поэтому решил написать сайт, где я сам смогу копить. так скажем, на будущее для Маруси. Как только она достигнет возраста в 18 лет, то сможет снять все накопления до копейки и потратить по своему усмотрению.</p><p>Чтобы совершить перевод, тебе достаточно отсканировать <a href="../qr">QR-код</a> любым банковским приложением и ввести сумму перевода <small><em>(переводы совершаются без комиссий)</em></small></p>
+<p>Совершив регистрацию, тебе будут доступны дополнительные функции, которые не доступны для гостей (полный отчет по счету, график пополнений, кто вносил, баланс счета, и многое другое). <a href="../registration">Регистрируйся</a> и <a href="../singin">входи</a>, чтобы ощутить в полном объеме весь функционал сайта!</p>
+</div>
+
+
+<br clear="all">
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(89686765, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+</script>
+<!-- /Yandex.Metrika counter -->
+    ]]>
+  </turbo:content>
+</item>
+</channel>
+</rss>

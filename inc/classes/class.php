@@ -72,9 +72,9 @@ class User
 		return;
 	}
 
-	public static function getAdminGroup()
+	public static function getNumberGroup()
 	{
-		self:: $group = 1;
+		self::$group = 1;
 		return self::$group;
 	}
 }
@@ -92,5 +92,36 @@ class Menu
 		<li><a href='../?pass'>Пароль</a></li></ul></div>";
 
 	    return self::$menu;
+	}
+}
+
+class TimeShtamp
+{
+	public static $date_pay;
+
+	public static function getDate()
+	{
+
+// Формирование даты
+		$m = [
+			'01' => 'января',
+			'02' => 'февраля',
+			'03' => 'марта',
+			'04' => 'апреля',
+			'05' => 'мая',
+			'06' => 'июня',
+			'07' => 'июля',
+			'08' => 'августа',
+			'09' => 'сентября',
+			'10' => 'октября',
+			'11' => 'ноября',
+			'12' => 'декабря'
+		];
+
+		foreach ($m as $date_key => $date_value) {
+			self::$date_pay = ($date_key = date('m')) ? date('d '.$m[$date_key].' Y H:i:s') : '';
+		}
+// Формирование даты Конец
+		return self::$date_pay;
 	}
 }

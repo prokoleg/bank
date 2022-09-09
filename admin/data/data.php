@@ -26,6 +26,7 @@ class Dates
 	return $this->data;
 	}
 }
+
 $arr = array(1,1.5,2,2.7,3,3.2,3);
 foreach ($arr as $key => $value) {
   echo "\t\t\t".$value.",\n";

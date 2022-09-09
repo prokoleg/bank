@@ -17,6 +17,7 @@ a {
 }
 .tab { text-indent:40px }
 .h-2 { font-size: 15px; }
+.mt-50 { margin-top: -50px; }
 .m2 { margin-top: 2vh; }
 .m5 { margin-top: 5vh; }
 .m10 { margin-top: 10vh; }
