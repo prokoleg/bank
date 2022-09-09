@@ -48,7 +48,7 @@ if ($_GET) :
     <tbody>
 <?php
 // получаем соединение с базой данных
-include_once ('../inc/config.php');
+//include_once ('../inc/config.php');
 $conn = new mysqli(HOST, USER, PASS, DATABASE);
 $sql = "SELECT id, avatar, login, firstname, lastname, email, city, ip, user_group FROM users";
 $result = $conn->query($sql);
