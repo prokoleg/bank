@@ -19,7 +19,7 @@
 * PHP ООП
 * MySQL
 * Bootstrap5
-* JsvsScript
+* JavaScript
 
 Проект сделан на коленке, посему прошу строго не судить :)
 
@@ -28,7 +28,7 @@
 
 [Демо проекта](https://bank.blanet.ru)
 
-[Связаться с автором](mailto:info@blanet.ru?subject=Ответ%20с%20GitHub&body=Проект%20https://github.com/prokoleg/site)
+[Связаться с автором](mailto:info@blanet.ru?subject=Ответ%20с%20GitHub&body=Проект%20https://github.com/prokoleg/bank)
 
 #### О лицензии ####
 Кто захочет изменить код, автор не против не смотря на условия лицензии. Так что делайте, что хотите.
